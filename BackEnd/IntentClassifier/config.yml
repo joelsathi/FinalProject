@@ -2,19 +2,39 @@
 # https://rasa.com/docs/rasa/model-configuration/
 recipe: default.v1
 
+# language: en
+
+# pipeline:
+# - name: WhitespaceTokenizer
+# - name: CountVectorsFeaturizer
+# - name: CountVectorsFeaturizer
+#   analyzer: "char_wb"
+#   min_ngram: 1
+#   max_ngram: 4
+# - name: DIETClassifier
+#   epochs: 100
+#   constrain_similarities: true
+#   model_confidence: softmax
+# - name: classifier_3.LogisticRegressionClassifier
 language: en
 
 pipeline:
-  - name: rasa_intent_classifier.TransformerClassifier
-    model_name: "albert-base-v2"
-    epochs: 10
-    batch_size: 20
-    learning_rate: 0.00002
-    warmup_steps: 500
-    weight_decay: 0.01
-    scheduler_type: "constant"
-    max_length: 64
+  - name: svm.CustomIntentSVM
+    kernel: "linear"
+    coef0: 1
+    degree: 2
+    class_weight: "balanced"
 
+    # class_weight: "balanced" # Customize class_weight here
+    # max_iter: 100 # Customize max_iter here
+    # solver: "lbfgs" # Customize solver here
+
+  # - name: "RegexFeaturizer" # Add this Featurizer component
+  # - name: "WhitespaceTokenizer" # Add a Tokenizer component
+  # - name: classifier_3.LogisticRegressionClassifier
+  #   class_weight: "balanced" # Customize class_weight here
+  #   max_iter: 100 # Customize max_iter here
+  #   solver: "lbfgs"
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
 policies: null
