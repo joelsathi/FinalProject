@@ -22,7 +22,7 @@ def parse_pdf(file: BytesIO) -> List[str]:
     return output
 
 from langchain.document_loaders import PyPDFLoader
-loader = PyPDFLoader("C:\\University\\Academics_5th_sem\\7. Data Science & Engineering Project\\FinalProject\\BackEnd\\VectorDB\\Data\\bank_domain.pdf")
+loader = PyPDFLoader("C:\\University\\Academics_5th_sem\\7. Data Science & Engineering Project\\FinalProject\\BackEnd\\VectorDB_chat\\Data\\bank_domain.pdf")
 documents = loader.load()
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -45,7 +45,7 @@ embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
 # embeddings = HuggingFaceEmbeddings()
 
 from langchain.vectorstores import Chroma
-db = Chroma.from_documents(docs, embeddings, persist_directory="../db")
+db = Chroma.from_documents(docs, embeddings, persist_directory="../../db")
 
 # Testing
 query = "List out some transaction accounts."
