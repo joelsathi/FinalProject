@@ -1,5 +1,13 @@
-from VectorDB.access_db import search_similarity
-from LLM.llm_out import generate_llama2_response
+import sys
+
+sys.path.append("C:\\University\\Academics_5th_sem\\7. Data Science & Engineering Project\\FinalProject\\BackEnd\\VectorDB_chat\\access_db.py")
+sys.path.append("C:\\University\\Academics_5th_sem\\7. Data Science & Engineering Project\\FinalProject\\BackEnd\\LLM\\llm_out.py")
+
+# from VectorDB_chat.access_db import search_similarity
+# from LLM.llm_out import generate_llama2_response
+
+from BackEnd.VectorDB_chat.access_db import search_similarity
+from BackEnd.LLM.llm_out import generate_llama2_response
 
 
 def get_response(user_msg, past_msgs):

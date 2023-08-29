@@ -4,8 +4,11 @@ import os
 
 import sys
 sys.path.append("C:\\University\\Academics_5th_sem\\7. Data Science & Engineering Project\\FinalProject\\BackEnd\\LLM\\llm_out.py")
-
+sys.path.append("C:\\University\\Academics_5th_sem\\7. Data Science & Engineering Project\\FinalProject\\respond_query.py")
+# sys.path.append("C:\\University\\Academics_5th_sem\\7. Data Science & Engineering Project\\FinalProject\\BackEnd\\repond_query.py")
 from BackEnd.LLM.llm_out import get_output_llm
+
+from respond_query import get_response
 
 # App title
 st.set_page_config(page_title="🤖🏦 BotMora")
@@ -40,6 +43,11 @@ user_msgs = []
 assistant_msgs = ["Assistant: How may I assist you today?"]
 
 dialogue = "Assistant: How may I assist you today?"
+
+
+def get_assistant_response(prompt_input):
+    output = get_response(prompt_input, st.session_state.messages)
+    return output
 
 # Function for generating LLaMA2 response
 def generate_llama2_response(prompt_input, context="", db_ans=""):
@@ -103,7 +111,7 @@ if prompt := st.chat_input(disabled=not replicate_api):
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response = generate_llama2_response(prompt)
+            response = get_assistant_response(prompt)
             placeholder = st.empty()
             full_response = ''
             for item in response:
