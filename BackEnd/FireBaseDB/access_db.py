@@ -96,7 +96,7 @@ def CreateTransaction(accountNumber, transactionType, transactionAmount):
 # Get Account Details ---------------------------------------------
 def GetAccount(accountNumber):
     print(pyrebase_db.child("Account").child(accountNumber).get().val())
-    # return pyrebase_db.child("Account").child(accountNumber).get().val()
+    return pyrebase_db.child("Account").child(accountNumber).get().val()
 
 
 # Get All Transactions of Account ---------------------------------------------
@@ -123,7 +123,7 @@ def GetTransactions(accountNumber):
 
 # GetTransactions("ACC6")
 
-GetAccount("ACC6")
+# GetAccount("ACC6")
 
 
 

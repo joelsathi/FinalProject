@@ -29,7 +29,7 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
                                     User: {user_msg}
                                     The following context is provided to you to answer the question
                                     Context: {db_ans}
-                                    Formulate the answer using the context provided and answer the question as the assistant:
+                                    Formulate the answer using the context provided. Finish the Answer as the assistant:
                                     Assistant:
                                     """
     
