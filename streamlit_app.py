@@ -8,7 +8,7 @@ sys.path.append("C:\\University\\Academics_5th_sem\\7. Data Science & Engineerin
 # sys.path.append("C:\\University\\Academics_5th_sem\\7. Data Science & Engineering Project\\FinalProject\\BackEnd\\repond_query.py")
 from BackEnd.LLM.llm_out import get_output_llm
 
-from .respond_query import get_response
+from respond_query import get_response
 
 # App title
 st.set_page_config(page_title="🤖🏦 BotMora")
