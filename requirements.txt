@@ -8,3 +8,4 @@ langchain
 pypdf
 sentence_transformers
 chromadb
+pyrebase4
