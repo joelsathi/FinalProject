@@ -2,6 +2,7 @@ import pyrebase
 import json
 from datetime import datetime
 import hashlib  # For password hashing
+import secrets  # For generating secure tokens
 
 firebaseConfig = {
   "apiKey": "AIzaSyDTrPMLJ9PnNqPPiY4KETnMAkNXSDVf1iM",
@@ -21,6 +22,7 @@ pyrebase_db = firebase.database()
 def hash_password(password):
     salt = "random_salt_here"  # Add a random salt for security
     return hashlib.sha256((password + salt).encode()).hexdigest()
+
 # Generate a unique account number by appending a number to the prefix
 def generate_account_id(prefix, existing_account_numbers):
 
@@ -72,6 +74,32 @@ def AuthenticateUser(accountNumber, password):
             return True
     return False
 
+# Function to generate a secure token
+def generate_token():
+    return secrets.token_hex(32)  # Generate a 64-character (256-bit) token
+
+# Login with Account ID and Password
+def LoginWithCredentials(accountNumber, password):
+    # Verify the entered credentials against the stored account data
+    account_data = pyrebase_db.child("Account").child(accountNumber).get().val()
+    if account_data:
+        stored_password = account_data.get("password")
+        hashed_password = hash_password(password)
+        if stored_password == hashed_password:
+            # Generate and store a secure token for this user
+            token = generate_token()
+            pyrebase_db.child("Account").child(accountNumber).child("token").set(token)
+            return token
+    return None
+# Get Account Details Using Token ---------------------------------------------
+def GetAccountWithToken(token):
+    # Query the database to find the user account associated with the provided token
+    users = pyrebase_db.child("Account").order_by_child("token").equal_to(token).get()
+    if users:
+        user_account = next(iter(users.val().items()))  # Get the first user found
+        return user_account[0]  # Return the account number
+    return None
+
 # Get Account Details ---------------------------------------------
 def GetAccount(accountNumber, password):
     if AuthenticateUser(accountNumber, password):
@@ -83,4 +111,4 @@ def GetAccount(accountNumber, password):
 
 # Example usage:
 # CreateAccount("kavijajak", "kavi@gmail.com", "Savings", 5000, "password")
-# GetAccount("ACC6", "password")
+# GetAccount("ACC7", "password")
