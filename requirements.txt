@@ -1,3 +1,8 @@
-rasa==2.8.0
-torch==1.10.0
-transformers==4.12.5
+rasa
+torch
+transformers
+streamlit
+replicate
+scikit-learn
+langchain
+pypdf
