@@ -6,3 +6,5 @@ replicate
 scikit-learn
 langchain
 pypdf
+sentence_transformers
+chromadb
