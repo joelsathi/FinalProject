@@ -1,6 +1,8 @@
 import pyrebase
+import json
 from datetime import datetime
 import hashlib  # For password hashing
+import secrets  # For generating secure tokens
 
 firebaseConfig = {
   "apiKey": "AIzaSyDTrPMLJ9PnNqPPiY4KETnMAkNXSDVf1iM",
@@ -13,8 +15,13 @@ firebaseConfig = {
   "measurementId": "G-ZPYWSE9S0J"
 }
 
-firebase=pyrebase.initialize_app(firebaseConfig)
-pyrebase_db=firebase.database()
+firebase = pyrebase.initialize_app(firebaseConfig)
+pyrebase_db = firebase.database()
+
+# Function to hash passwords before storage
+def hash_password(password):
+    salt = "random_salt_here"  # Add a random salt for security
+    return hashlib.sha256((password + salt).encode()).hexdigest()
 
 # Generate a unique account number by appending a number to the prefix
 def generate_account_id(prefix, existing_account_numbers):
@@ -26,11 +33,6 @@ def generate_account_id(prefix, existing_account_numbers):
         account_number = f"{prefix}{count}"
 
     return account_number
-
-# Function to hash passwords before storage
-def hash_password(password):
-    salt = "random_salt_here"  # Add a random salt for security
-    return hashlib.sha256((password + salt).encode()).hexdigest()
 
 # Create New Account ---------------------------------------------
 def CreateAccount(UserName, userEmail, userAccountType, InitialBalance, password):
@@ -72,75 +74,41 @@ def AuthenticateUser(accountNumber, password):
             return True
     return False
 
-# Create Transaction ---------------------------------------------
+# Function to generate a secure token
+def generate_token():
+    return secrets.token_hex(32)  # Generate a 64-character (256-bit) token
 
-# Get Balance of Account
-def GetBalance(accountNumber):
-    return pyrebase_db.child("Account").child(accountNumber).child("balance").get().val()
-
-# Update Balance of Account
-def UpdateBalance(accountNumber, newBalance):
-    pyrebase_db.child("Account").child(accountNumber).child("balance").set(newBalance)
-
-
-def CreateTransaction(accountNumber, transactionType, transactionAmount):
-    # Get the current date and time
-    current_datetime = datetime.now()
-    transactionRecipient= current_datetime.strftime("%Y-%m-%d %H:%M:%S")
-    
-    transaction_data = {
-        "type": transactionType,
-        "amount": transactionAmount,
-        "recipient": transactionRecipient
-    }
-
-    pyrebase_db.child("Account").child(accountNumber).child("transactions").push(transaction_data)
-    if transactionType == "Deposit":
-        newBalance = GetBalance(accountNumber) + transactionAmount
-        UpdateBalance(accountNumber, newBalance)
-    elif transactionType == "Withdraw":
-        newBalance = GetBalance(accountNumber) - transactionAmount
-        UpdateBalance(accountNumber, newBalance)
-    else:
-        print("Error: Invalid Transaction Type")
-
-    print(f"Transaction of {transactionAmount} {transactionType} has been made to account {accountNumber} at {transactionRecipient}")
-    # return transaction_data
-
+# Login with Account ID and Password
+def LoginWithCredentials(accountNumber, password):
+    # Verify the entered credentials against the stored account data
+    account_data = pyrebase_db.child("Account").child(accountNumber).get().val()
+    if account_data:
+        stored_password = account_data.get("password")
+        hashed_password = hash_password(password)
+        if stored_password == hashed_password:
+            # Generate and store a secure token for this user
+            token = generate_token()
+            pyrebase_db.child("Account").child(accountNumber).child("token").set(token)
+            return token
+    return None
+# Get Account Details Using Token ---------------------------------------------
+def GetAccountWithToken(token):
+    # Query the database to find the user account associated with the provided token
+    users = pyrebase_db.child("Account").order_by_child("token").equal_to(token).get()
+    if users:
+        user_account = next(iter(users.val().items()))  # Get the first user found
+        return user_account[0]  # Return the account number
+    return None
 
 # Get Account Details ---------------------------------------------
 def GetAccount(accountNumber, password):
     if AuthenticateUser(accountNumber, password):
         print(pyrebase_db.child("Account").child(accountNumber).get().val())
-        return pyrebase_db.child("Account").child(accountNumber).get().val()
     else:
         print("Authentication failed. Please check your account number and password.")
 
-# Get All Transactions of Account ---------------------------------------------
-def GetTransactions(accountNumber):
-    try:
-      transactions=pyrebase_db.child("Account").child(accountNumber).child("transactions").get()
-    except:
-      print("No transactions found")
-    try:
-      for transaction in transactions:
-          # print(transaction.key())
-          print(f" {transaction.val().get('recipient')} {transaction.val().get('type')} {transaction.val().get('amount')} ")
-          print("")
-    except:
-      print("No transactions found")
-    # return pyrebase_db.child("Account").child(accountNumber).child("transactions").get().val()
+# ... other functions ...
 
-
-
-# CreateAccount("kavijajak", "kavi@gmail.com", "Savings", 5000)
-
-# CreateTransaction("ACC6", "Deposit", 5000)
-# CreateTransaction("ACC6", "Withdraw", 3500)
-
-# GetTransactions("ACC6")
-
-GetAccount("ACC6")
-
-
-
+# Example usage:
+# CreateAccount("kavijajak", "kavi@gmail.com", "Savings", 5000, "password")
+# GetAccount("ACC7", "password")

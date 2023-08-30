@@ -15,6 +15,24 @@ st.set_page_config(page_title="🤖🏦 BotMora")
 
 # Replicate Credentials
 with st.sidebar:
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+    if st.button("Login"):
+        if username and password:
+            # Authenticate the user
+            token = replicate.LoginWithCredentials(username, password)
+            if token:
+                # Store the token in the Streamlit session state
+                st.session_state.token = token
+                st.success("Login successful.")
+                if st.button("Logout"):
+                    # Remove the token from the Streamlit session state
+                    del st.session_state.token
+                    st.success("Logout successful.")
+            else:
+                st.error("ERROR: Invalid username or password.")
+        else:
+            st.error("ERROR: Please enter both username and password.")
     st.title('🤖🏦 BotMora')
     if 'REPLICATE_API_TOKEN' in st.secrets:
         st.success('API key already provided!', icon='✅')
