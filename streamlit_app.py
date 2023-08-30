@@ -1,7 +1,4 @@
 import streamlit as st
-import replicate
-import os
-from BackEnd.LLM.llm_out import get_output_llm
 from respond_query import get_response
 from lang_translator import translate_to_lang
 
@@ -20,6 +17,14 @@ with st.sidebar:
             st.warning('Please enter your credentials!', icon='⚠️')
         else:
             st.success('Proceed to entering your prompt message!', icon='👉')
+    
+    selected_language = st.sidebar.selectbox('Select the preferred language', ['Tamil', 'Sinhala', 'English'], key='selected_language')
+    if selected_language == 'Tamil':
+        lang = 'ta'
+    elif selected_language == 'Sinhala':
+        lang = 'si'
+    else:
+        lang = 'en'
 
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():
@@ -38,7 +43,7 @@ def clear_chat_history():
 st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
 def get_assistant_response(prompt_input):
-    output, eng_res = get_response(prompt_input, st.session_state.messages)
+    output, eng_res = get_response(prompt_input, st.session_state.messages, translate_to=lang)
     return output, eng_res
 
 # User-provided prompt
