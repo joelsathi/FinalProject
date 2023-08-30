@@ -140,7 +140,7 @@ def GetTransactions(accountNumber):
 
 # GetTransactions("ACC6")
 
-GetAccount("ACC6")
+# GetAccount("ACC6")
 
 
 
