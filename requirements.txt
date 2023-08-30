@@ -1,4 +1,4 @@
-rasa
+# rasa
 torch
 transformers
 streamlit
@@ -9,3 +9,7 @@ pypdf
 sentence_transformers
 chromadb
 pyrebase4
+pymysql
+joblib
+jieba
+scipy
