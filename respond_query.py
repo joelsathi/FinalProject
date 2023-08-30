@@ -13,7 +13,7 @@ from BackEnd.FireBaseDB.access_db import GetAccount,GetBalance
 from lang_translator import translate_to_lang
 
 
-def get_response(user_msg, past_msgs):
+def get_response(user_msg, past_msgs, translate_to="si"):
     # return GetAccount("ACC1"),GetBalance("ACC1")
 
     # use the intent classifier to get the intent of the user message
@@ -31,17 +31,15 @@ def get_response(user_msg, past_msgs):
     
     # db_context = GetAccount("ACC1")
     out = generate_llama2_response(user_msg, past_msgs)
-
-    # answer = ""
-
-    # for item in out:
-    #     answer += item
-
+    
     eng_response = ""
     for item in out:
         eng_response += str(item)
 
-    cur_out = translate_to_lang(eng_response, translate_from="en", translate_to="si")
+    if translate_to == "en":
+        cur_out = eng_response
+    else:
+        cur_out = translate_to_lang(eng_response, translate_from="en", translate_to=translate_to)
 
     return cur_out, eng_response
 

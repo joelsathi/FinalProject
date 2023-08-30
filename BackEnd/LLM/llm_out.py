@@ -49,6 +49,7 @@ def generate_llama2_response(user_input, past_msgs, context="", db_ans=""):
                         {chat_history}
                         User: {user_msg}
                         You are a helpful banking assistant.You should only answer the question and don't provide more information.
+                        If the question is not from banking domain, you should say "I am a banking chatbot, I am not trained to answer this question".
                         Keep your answer within 50 words.
                         Finish the answer as assistant only. Don't answer as User.
                         Assistant: 
