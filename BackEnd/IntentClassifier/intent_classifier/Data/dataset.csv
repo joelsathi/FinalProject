@@ -1,0 +1,35 @@
+﻿Words ,context,intent_labels,customer
+What is my current account balance,{},user_specific,common
+What are the current interest rates for savings accounts at your bank?,{},bank_specific,common
+Could you tell me how much money I have in my account,{},user_specific,common
+How do I apply for a credit card with your bank?,{},bank_specific,common
+Can you give me an update on my account balance,{},user_specific,common
+What's the process for opening a new checking account at your bank?,{},bank_specific,common
+What's the balance in my account,{},user_specific,common
+Tell me about the history of the bank,{},bank_specific,common
+I'd like to check my current account balance,{},user_specific,common
+What's the total amount in my account,{},user_specific,common
+What's the interest rate on a 5-year certificate of deposit with your bank?,{},bank_specific,common
+Can you inform me about the balance in my account,{},user_specific,common
+How long does it take for a wire transfer to be processed at your bank?,{},bank_specific,common
+Please give me details about my account balance,{},user_specific,common
+What's the minimum balance requirement for a your bank savings account?,{},bank_specific,common
+What is my credit card statement balance,{},user_specific,common
+Can you provide details about your bank's mobile banking app features?,{},bank_specific,common
+How can I change my email address on file,{},user_specific,common
+What investment products does your bank offer for retirement planning?,{},bank_specific,common
+What's the interest rate on my savings account,{},user_specific,common
+How can I request a loan extension with your bank?,{},bank_specific,common
+Can you help me with a transaction dispute,{},user_specific,common
+What's the procedure for reporting a lost or stolen debit card from your bank?,{},bank_specific,common
+Please provide details about my recent transactions,{},user_specific,common
+Tell me about your bank's mortgage options for first-time homebuyers.,{},bank_specific,common
+Is my account eligible for a credit limit increase,{},user_specific,common
+Are there any special promotions or offers available at your bank?,{},bank_specific,common
+Can you explain the fees associated with my account,{},user_specific,common
+How can I reset my online banking password with your bank?,{},bank_specific,common
+What are the options for transferring funds between accounts,{},user_specific,common
+What's the customer service contact number for your bank?,{},bank_specific,common
+Can you recommend a savings strategy for me,{},user_specific,common
+Can you explain the benefits of your bank's loyalty program?,{},bank_specific,common
+I need a copy of my account statement for tax purposes,{},user_specific,common
