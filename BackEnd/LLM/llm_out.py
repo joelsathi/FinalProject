@@ -1,7 +1,7 @@
 import replicate
 import os
 
-REPLICATE_API_TOKEN = "r8_4XLZPiv7b4U25JHazYOny8Nglja2o8C22WWwf"
+REPLICATE_API_TOKEN = "r8_btRXn8XmhQdWoqp4WzsfQFjuRFAYjyA1mOKPr"
 os.environ['REPLICATE_API_TOKEN'] = REPLICATE_API_TOKEN
 
 def get_output_llm(prompt, temperature=0.5, top_p=0.8, max_length=512, repetition_penalty=1):
