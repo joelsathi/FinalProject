@@ -7,6 +7,7 @@ sys.path.append("C:\\University\\Academics_5th_sem\\7. Data Science & Engineerin
 sys.path.append("C:\\University\\Academics_5th_sem\\7. Data Science & Engineering Project\\FinalProject\\respond_query.py")
 # sys.path.append("C:\\University\\Academics_5th_sem\\7. Data Science & Engineering Project\\FinalProject\\BackEnd\\repond_query.py")
 from BackEnd.LLM.llm_out import get_output_llm
+from BackEnd.FireBaseDB.access_db import auth
 
 from respond_query import get_response
 
@@ -20,7 +21,12 @@ with st.sidebar:
     if st.button("Login"):
         if username and password:
             # Authenticate the user
-            token = replicate.LoginWithCredentials(username, password)
+            # token = replicate.LoginWithCredentials(username, password)
+            try:
+                token = auth.sign_in_with_email_and_password(username, password)
+            except:
+                token = None
+                
             if token:
                 # Store the token in the Streamlit session state
                 st.session_state.token = token
@@ -63,8 +69,8 @@ assistant_msgs = ["Assistant: How may I assist you today?"]
 dialogue = "Assistant: How may I assist you today?"
 
 
-def get_assistant_response(prompt_input):
-    output = get_response(prompt_input, st.session_state.messages)
+def get_assistant_response(prompt_input,token):
+    output = get_response(prompt_input, st.session_state.messages, token)
     return output
 
 # Function for generating LLaMA2 response
@@ -129,7 +135,7 @@ if prompt := st.chat_input(disabled=not replicate_api):
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response = get_assistant_response(prompt)
+            response = get_assistant_response(prompt,token=st.session_state.token)
             placeholder = st.empty()
             full_response = ''
             for item in response:

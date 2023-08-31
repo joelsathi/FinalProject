@@ -1,11 +1,12 @@
 import replicate
 import os
 
-REPLICATE_API_TOKEN = "r8_4XLZPiv7b4U25JHazYOny8Nglja2o8C22WWwf"
+REPLICATE_API_TOKEN = "r8_3HKUEnH4PKx42QQIVjSLRyxhuXLimLL39mBtL"
 os.environ['REPLICATE_API_TOKEN'] = REPLICATE_API_TOKEN
 
 def get_output_llm(prompt, temperature=0.5, top_p=0.8, max_length=512, repetition_penalty=1):
-    llm = 'a16z-infra/llama7b-v2-chat:4f0a4744c7295c024a1de15e1a63c880d3da035fa1f49bfd344fe076074c8eea'
+    # llm = 'a16z-infra/llama7b-v2-chat:4f0a4744c7295c024a1de15e1a63c880d3da035fa1f49bfd344fe076074c8eea'
+    llm = "a16z-infra/llama-2-13b-chat:9dff94b1bed5af738655d4a7cbcdcde2bd503aa85c94334fe1f42af7f3dd5ee3"
 
     output = replicate.run(llm, 
                            input={"prompt": prompt,
