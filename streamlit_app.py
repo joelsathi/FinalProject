@@ -83,7 +83,7 @@ dialogue = "Assistant: How may I assist you today?"
 
 
 def get_assistant_response(prompt_input):
-    output, eng_response = get_response(prompt_input, st.session_state.messages, token=token, translate_to=lang)
+    output, eng_response = get_response(prompt_input, st.session_state.messages,token=st.session_state.token, translate_to=lang)
     return output, eng_response
 
 # User-provided prompt
@@ -96,7 +96,7 @@ if prompt := st.chat_input(disabled=not replicate_api):
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response, eng_response = get_assistant_response(prompt,token=st.session_state.token)
+            response, eng_response = get_assistant_response(prompt)
             placeholder = st.empty()
             placeholder.markdown(response)
     message = {"role": "assistant", "content": eng_response, "translated": response}
