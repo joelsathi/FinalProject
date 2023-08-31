@@ -1,0 +1,13 @@
+{
+    "root": {
+        "clf_type": "sklearn-classifier",
+        "scoring": null,
+        "cv": 5,
+        "best_params": {
+            "clf__class_weight": "balanced",
+            "clf__max_features": null,
+            "clf__n_estimators": 50
+        },
+        "best_score": 1.0
+    }
+}
