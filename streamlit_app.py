@@ -6,8 +6,6 @@ from BackEnd.FireBaseDB.access_db import auth
 from respond_query import get_response
 
 
-
-
 # App title
 st.set_page_config(page_title="🤖🏦 BotMora")
 
@@ -124,12 +122,3 @@ if st.session_state.messages[-1]["role"] != "assistant":
             placeholder.markdown(response)
     message = {"role": "assistant", "content": eng_response, "translated": response}
     st.session_state.messages.append(message)
-
-
-# hide_default_format = """
-#        <style>
-#        #MainMenu {visibility: hidden; }
-#        footer {visibility: hidden;}
-#        </style>
-#        """
-# st.markdown(hide_default_format, unsafe_allow_html=True)
