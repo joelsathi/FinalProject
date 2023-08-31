@@ -42,9 +42,16 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
                         Assistant:
                         """
 
+    check_context_template = """
+                            {user_msg}
+                            Is this related to banking domain? Provide Yes or No as the assistant:
+                            Assistant:
+                            """
+
     l = len(past_msgs)
     cnt = 0
     chat_history = ""
+    answer_flag = True
     for dict_message in past_msgs:
         if dict_message["role"] == "user":
             if l - cnt <= 6:
@@ -59,8 +66,20 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
     elif db_ans != "":
         string_dialogue = answer_using_database_answer_template.format(chat_history=chat_history, user_msg=user_input, db_ans=db_ans)
     else:
-        string_dialogue = answer_using_llm.format(chat_history=chat_history, user_msg=user_input)
+        context_check = get_output_llm(prompt=check_context_template.format(user_msg=user_input))
+        context_out = ""
+        for item in context_check:
+            context_out += str(item)
+        if "yes" in context_out.lower():
+            string_dialogue = answer_using_llm.format(chat_history=chat_history, user_msg=user_input)
+        else:
+            print("This is not in the banking domain")
+            response = "I am a banking chatbot, I am not trained to answer this question."
+            answer_flag = False
 
-    output = get_output_llm(prompt=string_dialogue)
-
-    return output
+    if answer_flag:
+        output = get_output_llm(prompt=string_dialogue)
+        response = ""
+        for item in output:
+            response += str(item)
+    return response

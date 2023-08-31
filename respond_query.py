@@ -1,14 +1,5 @@
-import sys
-
-sys.path.append("C:\\University\\Academics_5th_sem\\7. Data Science & Engineering Project\\FinalProject\\BackEnd\\VectorDB_chat\\access_db.py")
-sys.path.append("C:\\University\\Academics_5th_sem\\7. Data Science & Engineering Project\\FinalProject\\BackEnd\\LLM\\llm_out.py")
-
-# from VectorDB_chat.access_db import search_similarity
-# from LLM.llm_out import generate_llama2_response
-
 from BackEnd.VectorDB_chat.access_db import search_similarity
 from BackEnd.LLM.llm_out import generate_llama2_response
-# from BackEnd.FireBaseDB.access_db import get_intent
 from BackEnd.FireBaseDB.access_db import GetAccountDetails,GetBalance
 from lang_tranlsator import translate_to_lang
 
@@ -30,11 +21,7 @@ def get_response(user_msg, past_msgs, token, translate_to="si"):
     # similarity_context, doc = search_similarity(user_msg)
     
     # db_context = GetAccount("ACC1")
-    out = generate_llama2_response(user_msg, past_msgs)
-    
-    eng_response = ""
-    for item in out:
-        eng_response += str(item)
+    eng_response = generate_llama2_response(user_msg, past_msgs, context="", db_ans="")
 
     if translate_to == "en":
         cur_out = eng_response
