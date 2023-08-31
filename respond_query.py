@@ -9,10 +9,10 @@ sys.path.append("C:\\University\\Academics_5th_sem\\7. Data Science & Engineerin
 from BackEnd.VectorDB_chat.access_db import search_similarity
 from BackEnd.LLM.llm_out import generate_llama2_response
 # from BackEnd.FireBaseDB.access_db import get_intent
-from BackEnd.FireBaseDB.access_db import GetAccount,GetBalance
+from BackEnd.FireBaseDB.access_db import GetAccountDetails,GetBalance
 
 
-def get_response(user_msg, past_msgs):
+def get_response(user_msg, past_msgs, token):
     # return GetAccount("ACC1"),GetBalance("ACC1")
 
     # use the intent classifier to get the intent of the user message
@@ -26,16 +26,16 @@ def get_response(user_msg, past_msgs):
     #   # use the LLM to get the answer
 
     # similarity search
-    similarity_context, doc = search_similarity(user_msg)
+    # similarity_context, doc = search_similarity(user_msg)
 
-    # out = generate_llama2_response(user_msg, past_msgs)
-
+    # out = generate_llama2_response(user_msg, past_msgs, db_ans=GetBalance(token["localId"]))
+    out = generate_llama2_response(user_msg, past_msgs, db_ans=GetAccountDetails(token["localId"]))
     # answer = ""
 
     # for item in out:
     #     answer += item
 
-    return similarity_context
+    return out
 
 # past_msgs = [{"role":"Assistant", "content":"How can I help you today?"},]
 # user_msg = "List out some transaction accounts."
