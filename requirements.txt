@@ -12,3 +12,4 @@ pymysql
 joblib
 jieba
 scipy
+googletrans
