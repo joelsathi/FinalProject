@@ -1,91 +1,93 @@
 version: "3.1"
 
 nlu:
-- intent: greet
+- intent: Account_details
   examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+    - I want to know about my account details
+    - Can you provide me with information about my account?
+    - I need to check my account details.
+    - What can you tell me about my account?
+    - I'd like to get the details of my account, please.
+    - How can I access my account information?
+    - Tell me more about my account.
+    - I'm looking for my account details.
+    - Where can I find my account information?
+    - Please give me an update on my account.
+    - What's the status of my account?
+    - Provide me with my account summary.
+    - I need to review my account details.
+    - Give me a breakdown of my account information.
+    - Can you share my account balance?
+    - I want to see my account statement.
+    - Share my account history with me.
+    - I'm interested in my account specifics.
+    - Let's talk about my account details.
+    - Show me my account information.
+    - What's the current balance in my account?
+    - I'd like to know my account balance.
+    - How much money do I have in my account?
+    - Check my account status for me.
+    - Please update me on my account status.
+    - I'm curious about my account balance.
+    - What's the balance in my account right now?
+    - Can you give me an overview of my account?
+    - Share my account summary with me.
+    - I need to access my account information.
+    - Tell me about my recent account activity.
+    - Provide me with my account history.
 
-- intent: goodbye
-  examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
 
-- intent: affirm
+- intent: Account_balance
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+    - Can you check my account balance?
+    - What's the current balance in my account?
+    - I need to find out how much money I have in my account.
+    - Please provide me with my account balance.
+    - How can I see the balance in my account?
+    - Tell me my account balance.
+    - What's the available balance in my account?
+    - I'd like to know the balance of my account.
+    - Check my account for the current balance.
+    - Share my account balance with me.
+    - How much money is in my account right now?
+    - Provide me with the balance in my account.
+    - I want to check my account balance.
+    - What's my account's balance status?
+    - Let's talk about my account balance.
+    - Share the current balance of my account.
+    - How do I find out my account balance?
+    - Can you tell me how much money I have?
+    - Please give me an update on my account balance.
+    - What's the balance in my bank account?
+    - Tell me the balance of my savings account.
+    - I'm interested in my account's current balance.
+    - Check the available funds in my account.
+    - I'd like to see my account's available balance.
+    - Share my current account balance, please.
+    - What's the balance in my checking account?
+    - I want to check my savings account balance.
+    - Tell me the balance in my account right now.
+    - Provide me with the current account balance.
+    - I need information on my account's available funds.
 
-- intent: deny
+- intent: HR Management
   examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+    - What are the benefits of working at Bank of Mora?
+    - What is the company culture like at Bank of Mora?
+    - What are the opportunities for advancement at Bank of Mora?
+    - What are the training and development programs offered by Bank of Mora?
+    - What is the work-life balance like at Bank of Mora?
+    - How does Bank of Mora support diversity and inclusion in the workplace?
+    - What are the company's policies on flexible work arrangements?
+    - What are the company's policies on parental leave and other family-friendly benefits?
+    - What are the company's policies on health and safety in the workplace?
+    - What are the company's policies on non-discrimination and harassment?
 
-- intent: mood_great
+- intent: apply_loan
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+    - I want to apply for an SME Online loan.
+    - How can I apply for a loan from Bank of Mora?
+    - Tell me more about the SME Online loan application.
+    - What are the requirements for getting a loan from Bank of Mora?
+    - Can I apply for a business loan using my phone?
 
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
