@@ -29,11 +29,16 @@ The Localized Chatbot for Bank Customer Care project aims to develop an intellig
 
 Login details for the chatbot
 
-``` Email: sada@gmail.com  ```
+``` bash
+Email: sada@gmail.com  
+```
 <br>
 ``` Password: 123456 ```
 <br>
-``` Replicate API TOKEN: r8_3HKUEnH4PKx42QQIVjSLRyxhuXLimLL39mBtL ```
+
+``` bash
+Replicate API TOKEN: r8_3HKUEnH4PKx42QQIVjSLRyxhuXLimLL39mBtL 
+```
 
 Open a command prompt
 
@@ -41,10 +46,14 @@ Go to BackEnd\IntentClassifierRasa\
 
 Run the following command to start the Rasa server for the chatbot.
 
-``` rasa run --enable-api -m models/20230831-171553-merciless-pass.tar.gz ```
+``` bash
+rasa run --enable-api -m models/20230901-131720-reduced-shark.tar.gz
+ ```
 
 Open a new command prompt and run the following command to start the action server.
 
-``` streamlit run streamlit_app.py ```
+``` bash
+streamlit run streamlit_app.py 
+```
 
 ## Contributing

@@ -9,3 +9,16 @@ stories:
   - intent: Account_balance
   - action: utter_ask_account_balance
 
+- story: Bank2
+  steps:
+  - intent: Account_details
+  - action: utter_ask_account_holder_name
+  - intent: Account_number
+  - action: utter_ask_account_number
+
+- story: Bank3
+  steps:
+  - intent: Account_details
+  - action: utter_ask_account_type
+  - intent: Account_emailaddress
+  - action: utter_ask_account_emailaddress

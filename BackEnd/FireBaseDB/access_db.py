@@ -28,11 +28,21 @@ def GetBalance(accountNumber):
 def GetAccountDetails(accountNumber):
    return pyrebase_db.child("Account").child(accountNumber).get().val()
 
+# Get account number of user ---------------------------------------------
 def GetAccountNumber(accountNumber):
     return pyrebase_db.child("Account").child(accountNumber).child("account_number").get().val()
 
+# Get Account Name ---------------------------------------------
 def GetAccountName(accountNumber):
     return pyrebase_db.child("Account").child(accountNumber).child("name").get().val()
+
+# Get Account Type ---------------------------------------------
+def GetAccountType(accountNumber):
+    return pyrebase_db.child("Account").child(accountNumber).child("account_type").get().val()
+
+# Get Account Email ---------------------------------------------
+def GetAccountEmail(accountNumber):
+    return pyrebase_db.child("Account").child(accountNumber).child("email").get().val()
 
 # Get All Transactions of Account ---------------------------------------------
 def GetTransactions(accountNumber):
@@ -46,18 +56,6 @@ def GetTransactions(accountNumber):
       return tr
     except:
       print("No transactions found")
-    # return pyrebase_db.child("Account").child(accountNumber).child("transactions").get().val()
-
-
-
-# CreateAccount("kavijajak", "kavi@gmail.com", "Savings", 5000)
-
-# CreateTransaction("ACC6", "Deposit", 5000)
-# CreateTransaction("ACC6", "Withdraw", 3500)
-
-# GetTransactions("ACC6")
-
-# GetAccount("ACC6")
 
 
 
