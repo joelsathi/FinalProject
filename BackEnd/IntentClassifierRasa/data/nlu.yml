@@ -1,93 +1,190 @@
 version: "3.1"
 
 nlu:
-- intent: Account_details
-  examples: |
-    - I want to know about my account details
-    - Can you provide me with information about my account?
-    - I need to check my account details.
-    - What can you tell me about my account?
-    - I'd like to get the details of my account, please.
-    - How can I access my account information?
-    - Tell me more about my account.
-    - I'm looking for my account details.
-    - Where can I find my account information?
-    - Please give me an update on my account.
-    - What's the status of my account?
-    - Provide me with my account summary.
-    - I need to review my account details.
-    - Give me a breakdown of my account information.
-    - Can you share my account balance?
-    - I want to see my account statement.
-    - Share my account history with me.
-    - I'm interested in my account specifics.
-    - Let's talk about my account details.
-    - Show me my account information.
-    - What's the current balance in my account?
-    - I'd like to know my account balance.
-    - How much money do I have in my account?
-    - Check my account status for me.
-    - Please update me on my account status.
-    - I'm curious about my account balance.
-    - What's the balance in my account right now?
-    - Can you give me an overview of my account?
-    - Share my account summary with me.
-    - I need to access my account information.
-    - Tell me about my recent account activity.
-    - Provide me with my account history.
+  - intent: Account_details
+    examples: |
+      - I want to know about my account details
+      - Can you provide me with information about my account?
+      - I need to check my account details.
+      - What can you tell me about my account?
+      - I'd like to get the details of my account, please.
+      - How can I access my account information?
+      - Tell me more about my account.
+      - I'm looking for my account details.
+      - Where can I find my account information?
+      - Please give me an update on my account.
+      - What's the status of my account?
+      - Provide me with my account summary.
+      - I need to review my account details.
+      - Give me a breakdown of my account information.
+      - Can you share my account balance?
+      - I want to see my account statement.
+      - Share my account history with me.
+      - I'm interested in my account specifics.
+      - Let's talk about my account details.
+      - Show me my account information.
+      - What's the current balance in my account?
+      - I'd like to know my account balance.
+      - How much money do I have in my account?
+      - Check my account status for me.
+      - Please update me on my account status.
+      - I'm curious about my account balance.
+      - What's the balance in my account right now?
+      - Can you give me an overview of my account?
+      - Share my account summary with me.
+      - I need to access my account information.
+      - Tell me about my recent account activity.
+      - Provide me with my account history.
 
+  - intent: Account_balance
+    examples: |
+      - Can you check my account balance?
+      - What's the current balance in my account?
+      - I need to find out how much money I have in my account.
+      - Please provide me with my account balance.
+      - How can I see the balance in my account?
+      - Tell me my account balance.
+      - What's the available balance in my account?
+      - I'd like to know the balance of my account.
+      - Check my account for the current balance.
+      - Share my account balance with me.
+      - How much money is in my account right now?
+      - Provide me with the balance in my account.
+      - I want to check my account balance.
+      - What's my account's balance status?
+      - Let's talk about my account balance.
+      - Share the current balance of my account.
+      - How do I find out my account balance?
+      - Can you tell me how much money I have?
+      - Please give me an update on my account balance.
+      - What's the balance in my bank account?
+      - Tell me the balance of my savings account.
+      - I'm interested in my account's current balance.
+      - Check the available funds in my account.
+      - I'd like to see my account's available balance.
+      - Share my current account balance, please.
+      - What's the balance in my checking account?
+      - I want to check my savings account balance.
+      - Tell me the balance in my account right now.
+      - Provide me with the current account balance.
+      - I need information on my account's available funds.
 
-- intent: Account_balance
-  examples: |
-    - Can you check my account balance?
-    - What's the current balance in my account?
-    - I need to find out how much money I have in my account.
-    - Please provide me with my account balance.
-    - How can I see the balance in my account?
-    - Tell me my account balance.
-    - What's the available balance in my account?
-    - I'd like to know the balance of my account.
-    - Check my account for the current balance.
-    - Share my account balance with me.
-    - How much money is in my account right now?
-    - Provide me with the balance in my account.
-    - I want to check my account balance.
-    - What's my account's balance status?
-    - Let's talk about my account balance.
-    - Share the current balance of my account.
-    - How do I find out my account balance?
-    - Can you tell me how much money I have?
-    - Please give me an update on my account balance.
-    - What's the balance in my bank account?
-    - Tell me the balance of my savings account.
-    - I'm interested in my account's current balance.
-    - Check the available funds in my account.
-    - I'd like to see my account's available balance.
-    - Share my current account balance, please.
-    - What's the balance in my checking account?
-    - I want to check my savings account balance.
-    - Tell me the balance in my account right now.
-    - Provide me with the current account balance.
-    - I need information on my account's available funds.
+  - intent: HR Management
+    examples: |
+      - What are the benefits of working at Bank of Mora?
+      - What is the company culture like at Bank of Mora?
+      - What are the opportunities for advancement at Bank of Mora?
+      - What are the training and development programs offered by Bank of Mora?
+      - What is the work-life balance like at Bank of Mora?
+      - How does Bank of Mora support diversity and inclusion in the workplace?
+      - What are the company's policies on flexible work arrangements?
+      - What are the company's policies on parental leave and other family-friendly benefits?
+      - What are the company's policies on health and safety in the workplace?
+      - What are the company's policies on non-discrimination and harassment?
 
-- intent: HR Management
-  examples: |
-    - What are the benefits of working at Bank of Mora?
-    - What is the company culture like at Bank of Mora?
-    - What are the opportunities for advancement at Bank of Mora?
-    - What are the training and development programs offered by Bank of Mora?
-    - What is the work-life balance like at Bank of Mora?
-    - How does Bank of Mora support diversity and inclusion in the workplace?
-    - What are the company's policies on flexible work arrangements?
-    - What are the company's policies on parental leave and other family-friendly benefits?
-    - What are the company's policies on health and safety in the workplace?
-    - What are the company's policies on non-discrimination and harassment?
+  - intent: apply_loan
+    examples: |
+      - I want to apply for an SME Online loan.
+      - How can I apply for a loan from Bank of Mora?
+      - Tell me more about the SME Online loan application.
+      - What are the requirements for getting a loan from Bank of Mora?
+      - Can I apply for a business loan using my phone?
 
-- intent: apply_loan
-  examples: |
-    - I want to apply for an SME Online loan.
-    - How can I apply for a loan from Bank of Mora?
-    - Tell me more about the SME Online loan application.
-    - What are the requirements for getting a loan from Bank of Mora?
-    - Can I apply for a business loan using my phone?
-
+  - intent: vectorDb
+    examples: |
+      - What types of savings accounts does Bank of Mora offer, and how are they tailored to customers' needs?
+      - How does Bank of Mora describe its HR management approach and work environment?
+      - What is the significance of the diversity of the team at Bank of Mora, according to the text?
+      - How does Bank of Mora's HR policy contribute to maintaining a healthy work culture?
+      - What is the median age of Bank of Mora's employees, and why is this mentioned in the text?
+      - What is Bank of Mora's forward focus regarding its organizational culture, and how does it plan to achieve this?
+      - How does Bank of Mora plan to equip its employees with the skills needed for emerging and new technologies?
+      - What qualities or credentials does Bank of Mora seek in individuals who wish to join their team?
+      - What is the Bank of Mora's position in the banking and finance sector, and how does this affect its recruitment strategy?
+      - Where can individuals find information about job vacancies at Bank of Mora if they want to apply?
+      - What is the "SME Online" loan application facility, and who is it designed to empower, according to the text?
+      - What is the focus of Bank of Mora's Business Banking services, and where are they available?
+      - How does Bank of Mora aim to support the Small and Medium Entrepreneur community in Sri Lanka?
+      - Can you provide more information about the "BOM Export Circle" mentioned in the text and its significance?
+      - How does Bank of Mora use technology to facilitate loans, as mentioned in the text?
+      - Can you explain the different credit packages mentioned in BOM Digital Banking's corporate services, such as CapEx, Working Capital Financing, Offshore Credit, and Project Financing?
+      - What is the purpose or function of the "BOM Export Circle" within BOM Digital Banking?
+      - Could you provide more details about the "SME Circle," "BOM Mithuru," and "SME Online" services offered under Development Banking?
+      - What is the objective of the special loan scheme for sustainable energy and eco-friendly products in BOM Digital Banking?
+      - Can you explain the services and products related to Treasury and Investment mentioned, including Forward Exchange Agreement, Treasury Bills, Primary Dealer Unit, and Portfolio Management Service?
+      - How does the Business Revival & Rehabilitation Unit assist businesses, and what types of support does it offer?
+      - What is "Smart Pay," and how does it work as a low-value transaction method for making payments?
+      - What recognition did Bank of Mora receive in 2022, and why is it significant?
+      - What is the significance of Bank of Mora obtaining the ISO 14064-1:2?
+      - How did Bank of Mora perform in Q2-2023, and why is it described as ending with a positive note?
+      - What makes Bank of Mora stand out among banks worldwide in 2023?
+      - How did Bank of Mora celebrate its 84th Anniversary, and how does it contribute to the Sri Lankan economy?
+      - What is the significance of Bank of Mora being named the No.1 Banking Brand in Sri Lanka for the 15th consecutive year?
+      - Who received the Bank of Mora's 2022 Annual Report, and why is this report important?
+      - Can you provide more details about Bank of Mora ending 1Q-2023 with positive notes?
+      - What was the purpose of Bank of Mora hosting the Wesak Bathi Gee event in celebration of Wesak Poya Day?
+      - What is meant by "social media banking," and how does Bank of Mora introduce this concept?
+      - What is the phone number for Bank of Mora's Call Centre, and is it available 24/7?
+      - If someone is calling from outside Sri Lanka, what is the international phone number for contacting Bank of Mora?
+      - What is the email address for general inquiries or customer support at Bank of Mora?
+      - Can you provide the complete postal address of Bank of Mora, including the postal code?
+      - Is there any specific information or services related to the Bank of Mora's physical location at "BOM Square, Bank of Mora Mawatha, Colombo 01, Sri Lanka" that customers should be aware of?
+      - What is "BOM Smart Remit," and how does it make sending money home easier?
+      - How does Bank of Mora's global connectivity benefit customers, as mentioned in the content?
+      - Can you explain the different types of deposits mentioned under BOM Digital Banking, such as "My Sri Lanka," "PFCA," and "BFCA"?
+      - What are "Correspondent Relationships" in the context of Bank of Mora's international banking services, and how do they function?
+      - What options are available for sending money to Sri Lanka through Bank of Mora's International Banking services, and who are the "Remitting Agents"?
+      - What role does "Foreign Circle" play in providing customer service support for international banking customers?
+      - Can you explain the concept of "Smart Pay" and how it works as a low-value transaction method for payments using QR codes?
+      - What is Bank of Mora's mission, as described in the content, and how has it evolved over the years?
+      - Who was Sir Andrew Caldecott, and what role did he play in the establishment of Bank of Mora?
+      - Can you provide more details about the first state-owned commercial bank that opened on August 1, 1939, in Fort, Colombo? 
+      - How has Bank of Mora engaged with Sri Lankans from various backgrounds to create value for stakeholders?
+      - What is the significance of Bank of Mora having the largest network of touchpoints across the island, and how does it benefit customers?
+      - Could you explain the key international locations where Bank of Mora has established branches and the purpose of these international branches?
+      - What is the mission of Bank of Mora, and how does it define its role in the financial sector?
+      - What is the vision of Bank of Mora, and what does it aspire to become in the future?
+      - How does Bank of Mora plan to achieve its vision of becoming the nation's preferred bank with a strong global presence?
+      - What are the key attributes of Bank of Mora's mission, such as being "technologically sophisticated" and "resilient," and how do they contribute to its goals?
+      - Can you provide examples of the "customer-centric innovative financial solutions" that Bank of Mora intends to offer as part of its vision?
+      - How does Bank of Mora plan to establish a "strong global presence," and why is this important for the bank's mission?
+      - In what ways does Bank of Mora aim to empower its employees, and why is this part of its mission?
+      - Who are considered stakeholders in the context of Bank of Mora's mission, and how does the bank enhance value for them?
+      - How does Bank of Mora demonstrate its commitment to being customer-centric, and what specific actions or initiatives reflect this value?
+      - In what ways does Bank of Mora respect all forms of diversity, and how does this commitment manifest within the organization?
+      - Can you provide examples of how Bank of Mora maintains a high level of ethics, governance, and professionalism in its operations?
+      - How does Bank of Mora foster agility and innovation, and what are some notable instances of innovation within the organization?
+      - What mechanisms does Bank of Mora have in place to ensure accountability for all its actions, and can you provide examples of how accountability is upheld?
+      - Could you provide more historical context about the significance of the Bank of Mora's opening ceremony on August 1, 1939, by Sir Andrew Caldecott?
+      - What specific actions or practices does Bank of Mora employ to uphold the highest standards of good corporate governance and business integrity?
+      - How does Bank of Mora's comprehensive Sustainability Policy contribute to its commitment to sustainability, and can you provide insights into the key aspects of this policy?
+      - What are some examples of sustainability initiatives or projects that Bank of Mora has undertaken as part of its sustainability policy?
+      - What is the total income for both the Bank and the Group for the six-month period ending June 2023, and how do they compare?
+      - What is the profit before taxes on financial services for both the Bank and the Group during this period, and how do they differ?
+      - Can you provide the figures for profit before taxation and profit after taxation for both the Bank and the Group during this period?
+      - What is the total asset value for both the Bank and the Group as of June 30, 2023, and how does it compare to the previous period?
+      - What is the value of shareholders' funds (Capital & Reserves) for both the Bank and the Group, and how has it changed over time?
+      - How much in deposits and net loans and advances does the Bank and the Group hold as of June 30, 2023?
+      - How do the financial results of the Bank and the Group compare in terms of pre-tax and post-tax profits for the period ending June 30, 2023, compared to the same period in the previous year (H1-2022)?
+      - What are the key financial indicators for both the Bank and the Group, such as Return on average equity (ROE), Return on average assets (ROA), and Interest margin?
+      - How does the Capital Adequacy Ratio Tier 1 & 2 Capital compare between the Bank and the Group?
+      - What is the significance of the Liquid assets ratio (Domestic) for the Bank, and how does it impact its financial position?
+      - What are the steps involved in opening a new savings account with Bank of Mora (BOM), and can you briefly explain each step?
+      - Are there different types of savings accounts available with BOM, and how does one choose the most suitable account type?
+      - What documents are typically required when opening a savings account with BOM, and why are they necessary?
+      - Is there a minimum deposit requirement for opening a savings account, and does it vary depending on the account type?
+      - What does the application form entail, and what information is typically requested in the application?
+      - How long does it typically take to process a new savings account application with BOM?
+      - After submitting the application, how is the account information typically provided to the applicant?
+      - Can you explain how customers can access and manage their newly opened savings accounts with BOM?
+      - Are there any additional services or features that customers can set up for their savings accounts, and what are some examples of these optional services?
+      - What are the benefits of visiting a physical BOM branch compared to opening an account through the official website?
+      - How can customers determine which type of savings account is the best fit for their financial goals and needs?
+      - Why are government-issued photo ID and proof of address necessary documents for opening a savings account?
+      - Is the initial deposit amount a fixed requirement for all types of savings accounts, or does it vary depending on the account type?
+      - Are there any specific terms and conditions that applicants should be aware of before submitting their applications?
+      - What is the typical timeframe for processing and approving a savings account application with Bank of Mora?
+      - Are there any fees associated with maintaining a savings account, and if so, what are they?
+      - Can you provide some examples of additional services that customers can set up for their savings accounts and how these services can benefit them?
+      - What options are available for accessing and managing the savings account, and are there any fees associated with these services?
+      - Are there any specific requirements or qualifications for applicants, such as age restrictions or citizenship status, when opening a savings account with Bank of Mora?
