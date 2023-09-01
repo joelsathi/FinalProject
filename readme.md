@@ -23,26 +23,57 @@ The Localized Chatbot for Bank Customer Care project aims to develop an intellig
 
 ### Prerequisites
 
+Python <br>
+Anaconda <br>
+Firebase account
+
 ### Installation
+
+create a new conda environment with python version 3.8
+
+``` bash
+conda create -n chatbot python=3.8
+```
+
+Activate the conda environment
+
+``` bash
+conda activate chatbot
+```
+
+Install the requirements.txt file using the following command.
+
+``` bash
+pip install -r requirements.txt
+```
 
 ## Usage
 
 Login details for the chatbot
 
+Email:
 ``` bash
-Email: sada@gmail.com  
+sada@gmail.com  
 ```
 <br>
-``` Password: 123456 ```
+
+Password:
+``` bash
+ 123456
+```
+
 <br>
 
+Replicate API TOKEN: 
 ``` bash
-Replicate API TOKEN: r8_3HKUEnH4PKx42QQIVjSLRyxhuXLimLL39mBtL 
+r8_3HKUEnH4PKx42QQIVjSLRyxhuXLimLL39mBtL 
 ```
 
 Open a command prompt
 
-Go to BackEnd\IntentClassifierRasa\
+``` bash
+cd BackEnd\IntentClassifierRasa\
+```
 
 Run the following command to start the Rasa server for the chatbot.
 
