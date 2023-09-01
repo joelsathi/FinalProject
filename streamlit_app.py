@@ -1,13 +1,12 @@
 import streamlit as st
-
-from BackEnd.LLM.llm_out import get_output_llm
 from BackEnd.FireBaseDB.access_db import auth
-
 from respond_query import get_response
+from lang_tranlsator import translate_to_lang
 
 
 # App title
 st.set_page_config(page_title="🤖🏦 BotMora")
+st.session_state.token = None
 
 # Replicate Credentials
 with st.sidebar:
@@ -21,18 +20,26 @@ with st.sidebar:
     password = st.text_input("Password", type="password")
     col1, col2, col3 = st.columns((2, 2, 2))
 
+    if username and password:
+        try:
+            token = auth.sign_in_with_email_and_password(username, password)
+            if token:
+                st.session_state.token = token
+        except:
+            token = None
+
     if col2.button("Login"):
         if username and password:
             # Authenticate the user
             # token = replicate.LoginWithCredentials(username, password)
             try:
                 token = auth.sign_in_with_email_and_password(username, password)
+                if token:
+                    st.session_state.token = token
             except:
                 token = None
             
-            if token:
-                # Store the token in the Streamlit session state
-                st.session_state.token = token
+            if st.session_state.token:
                 st.success("Login successful.", icon="✅")
                 
                 col11, col21, col31 = st.sidebar.columns((2, 2, 2))
@@ -70,7 +77,7 @@ with st.sidebar:
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():
     st.session_state.messages = [
-        {"role": "assistant", "content": "How may I assist you today?"}
+        {"role": "assistant", "content": "How may I assist you today?", "translated": translate_to_lang("How may I assist you today?", "en", lang)}
     ]
 
 # Display or clear chat messages
@@ -91,12 +98,6 @@ def clear_chat_history():
 col1, col2, col3 = st.sidebar.columns((0.5, 2, 0.5))
 col2.button("Clear Chat History", on_click=clear_chat_history)
 
-user_msgs = []
-assistant_msgs = ["Assistant: How may I assist you today?"]
-
-dialogue = "Assistant: How may I assist you today?"
-
-
 def get_assistant_response(prompt_input):
     output, eng_response = get_response(
         prompt_input,
@@ -108,8 +109,9 @@ def get_assistant_response(prompt_input):
 
 
 # User-provided prompt
-if prompt := st.chat_input(disabled=not replicate_api):
-    st.session_state.messages.append({"role": "user", "content": prompt})
+if prompt := st.chat_input(disabled=(not replicate_api) or (not st.session_state.token)):
+    translated_user_input = translate_to_lang(prompt, lang, "en")
+    st.session_state.messages.append({"role": "user", "content": translated_user_input, "translated": prompt})
     with st.chat_message("user"):
         st.write(prompt)
 
@@ -117,7 +119,7 @@ if prompt := st.chat_input(disabled=not replicate_api):
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response, eng_response = get_assistant_response(prompt)
+            response, eng_response = get_assistant_response(translated_user_input)
             placeholder = st.empty()
             placeholder.markdown(response)
     message = {"role": "assistant", "content": eng_response, "translated": response}
