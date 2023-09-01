@@ -69,26 +69,57 @@ nlu:
       - Provide me with the current account balance.
       - I need information on my account's available funds.
 
-  - intent: HR Management
-    examples: |
-      - What are the benefits of working at Bank of Mora?
-      - What is the company culture like at Bank of Mora?
-      - What are the opportunities for advancement at Bank of Mora?
-      - What are the training and development programs offered by Bank of Mora?
-      - What is the work-life balance like at Bank of Mora?
-      - How does Bank of Mora support diversity and inclusion in the workplace?
-      - What are the company's policies on flexible work arrangements?
-      - What are the company's policies on parental leave and other family-friendly benefits?
-      - What are the company's policies on health and safety in the workplace?
-      - What are the company's policies on non-discrimination and harassment?
+- intent: Account_type
+  examples: |
+    - What type of account do I have?
+    - Can you tell me the account type associated with my account?
+    - I'm curious about the account type for my account.
+    - Please provide me with information about the account type.
+    - Tell me about the account category for my account.
+    - Is my account a checking or savings account?
+    - What kind of account was opened in my name?
+    - Which account category does my account fall into?
+    - I'd like to know the account classification for my account.
+    - Is my account considered a personal or business account?
 
-  - intent: apply_loan
-    examples: |
-      - I want to apply for an SME Online loan.
-      - How can I apply for a loan from Bank of Mora?
-      - Tell me more about the SME Online loan application.
-      - What are the requirements for getting a loan from Bank of Mora?
-      - Can I apply for a business loan using my phone?
+- intent: Account_holder_name
+  examples: |
+    - What is the full name of the account holder?
+    - Can you share the account holder's name for my account?
+    - Whose name is listed as the account holder on my account?
+    - I'd like to know the account holder name for my account.
+    - Please provide me with the name of the primary account holder.
+    - Who is the authorized account holder?
+    - Can you give me the legal name of the account owner?
+    - What is the name associated with this account?
+    - Tell me the full name of the person on the account.
+    - Who is the primary account holder for this account?
+
+- intent: Account_emailaddress
+  examples: |
+    - What is the email address of the primary account holder?
+    - Can you share the email address associated with my account?
+    - What email address is linked to my account?
+    - I'd like to know the contact email for my account.
+    - Provide me with the email address of the account holder.
+    - How can I contact the account holder via email?
+    - Share the primary email address associated with the account.
+    - What is the email used for account notifications?
+    - Give me the email address registered for this account.
+    - Tell me the email contact for this account.
+
+- intent: Account_number
+  examples: |
+    - What is the specific account number associated with my account?
+    - Can you provide me with my complete account number?
+    - Where can I find my account number?
+    - Please share the full account number with me.
+    - I need detailed information about my account number.
+    - How many digits does my account number have?
+    - What is the format of my account number?
+    - Tell me the entire account number for this account.
+    - I'd like to verify my account with the account number.
+    - Share the account identifier for this account.
 
   - intent: vectorDb
     examples: |
