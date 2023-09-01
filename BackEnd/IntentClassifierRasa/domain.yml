@@ -7,6 +7,11 @@ intents:
   - Account_emailaddress
   - Account_holder_name
   - Account_type
+  - vectorDb
+  - deny
+  - goodbye
+  - greet
+
 
 responses:
   utter_greet:
@@ -45,6 +50,9 @@ responses:
 
   utter_ask_account_type:
   - text: "acc type"
+
+  utter_ask_vectorDb:
+  - text: "vectorDb"
 
 session_config:
   session_expiration_time: 60

@@ -1,6 +1,6 @@
 from BackEnd.VectorDB_chat.access_db import search_similarity
 from BackEnd.LLM.llm_out import generate_llama2_response
-from BackEnd.FireBaseDB.access_db import GetAccountDetails,GetBalance
+from BackEnd.FireBaseDB.access_db import GetAccountDetails,GetBalance,GetAccountType,GetAccountNumber,GetAccountName,GetAccountEmail
 from lang_tranlsator import translate_to_lang
 from BackEnd.IntentClassifierRasa.intent_finder import get_intent
 
@@ -17,6 +17,14 @@ def get_response(user_msg, past_msgs, token, translate_to="si"):
     elif intent == "Account_balance":
         balance = GetBalance(token["localId"])
         db_context = f"Rs .{balance}"
+    elif intent == "Account_type":
+        db_context = GetAccountType(token["localId"])
+    elif intent == "Account_number":
+        db_context = GetAccountNumber(token["localId"])
+    elif intent == "Account_holder_name":
+        db_context = GetAccountName(token["localId"])
+    elif intent == "Account_emailaddress":
+        db_context = GetAccountEmail(token["localId"])
     elif intent == "vectorDb":
         vec_db_context, doc = search_similarity(user_msg)
 

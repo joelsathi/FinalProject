@@ -2,5 +2,4 @@
 /BackEnd/LLM/__pycache__
 /BackEnd/VectorDB/__pycache__
 /BackEnd/IntentClassifierRasa/__pycache__
-/BackEnd/IntentClassifierRasa/models
 /BackEnd/IntentClassifierRasa/.rasa/cache

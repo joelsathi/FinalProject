@@ -69,57 +69,57 @@ nlu:
       - Provide me with the current account balance.
       - I need information on my account's available funds.
 
-- intent: Account_type
-  examples: |
-    - What type of account do I have?
-    - Can you tell me the account type associated with my account?
-    - I'm curious about the account type for my account.
-    - Please provide me with information about the account type.
-    - Tell me about the account category for my account.
-    - Is my account a checking or savings account?
-    - What kind of account was opened in my name?
-    - Which account category does my account fall into?
-    - I'd like to know the account classification for my account.
-    - Is my account considered a personal or business account?
+  - intent: Account_type
+    examples: |
+      - What type of account do I have?
+      - Can you tell me the account type associated with my account?
+      - I'm curious about the account type for my account.
+      - Please provide me with information about the account type.
+      - Tell me about the account category for my account.
+      - Is my account a checking or savings account?
+      - What kind of account was opened in my name?
+      - Which account category does my account fall into?
+      - I'd like to know the account classification for my account.
+      - Is my account considered a personal or business account?
 
-- intent: Account_holder_name
-  examples: |
-    - What is the full name of the account holder?
-    - Can you share the account holder's name for my account?
-    - Whose name is listed as the account holder on my account?
-    - I'd like to know the account holder name for my account.
-    - Please provide me with the name of the primary account holder.
-    - Who is the authorized account holder?
-    - Can you give me the legal name of the account owner?
-    - What is the name associated with this account?
-    - Tell me the full name of the person on the account.
-    - Who is the primary account holder for this account?
+  - intent: Account_holder_name
+    examples: |
+      - What is the full name of the account holder?
+      - Can you share the account holder's name for my account?
+      - Whose name is listed as the account holder on my account?
+      - I'd like to know the account holder name for my account.
+      - Please provide me with the name of the primary account holder.
+      - Who is the authorized account holder?
+      - Can you give me the legal name of the account owner?
+      - What is the name associated with this account?
+      - Tell me the full name of the person on the account.
+      - Who is the primary account holder for this account?
 
-- intent: Account_emailaddress
-  examples: |
-    - What is the email address of the primary account holder?
-    - Can you share the email address associated with my account?
-    - What email address is linked to my account?
-    - I'd like to know the contact email for my account.
-    - Provide me with the email address of the account holder.
-    - How can I contact the account holder via email?
-    - Share the primary email address associated with the account.
-    - What is the email used for account notifications?
-    - Give me the email address registered for this account.
-    - Tell me the email contact for this account.
+  - intent: Account_emailaddress
+    examples: |
+      - What is the email address of the primary account holder?
+      - Can you share the email address associated with my account?
+      - What email address is linked to my account?
+      - I'd like to know the contact email for my account.
+      - Provide me with the email address of the account holder.
+      - How can I contact the account holder via email?
+      - Share the primary email address associated with the account.
+      - What is the email used for account notifications?
+      - Give me the email address registered for this account.
+      - Tell me the email contact for this account.
 
-- intent: Account_number
-  examples: |
-    - What is the specific account number associated with my account?
-    - Can you provide me with my complete account number?
-    - Where can I find my account number?
-    - Please share the full account number with me.
-    - I need detailed information about my account number.
-    - How many digits does my account number have?
-    - What is the format of my account number?
-    - Tell me the entire account number for this account.
-    - I'd like to verify my account with the account number.
-    - Share the account identifier for this account.
+  - intent: Account_number
+    examples: |
+      - What is the specific account number associated with my account?
+      - Can you provide me with my complete account number?
+      - Where can I find my account number?
+      - Please share the full account number with me.
+      - I need detailed information about my account number.
+      - How many digits does my account number have?
+      - What is the format of my account number?
+      - Tell me the entire account number for this account.
+      - I'd like to verify my account with the account number.
+      - Share the account identifier for this account.
 
   - intent: vectorDb
     examples: |
@@ -156,6 +156,9 @@ nlu:
       - What was the purpose of Bank of Mora hosting the Wesak Bathi Gee event in celebration of Wesak Poya Day?
       - What is meant by "social media banking," and how does Bank of Mora introduce this concept?
       - What is the phone number for Bank of Mora's Call Centre, and is it available 24/7?
+      - what is the contact number of the bank?
+      - What are the contact details of tha bank?
+      - How can i contact the bank?
       - If someone is calling from outside Sri Lanka, what is the international phone number for contacting Bank of Mora?
       - What is the email address for general inquiries or customer support at Bank of Mora?
       - Can you provide the complete postal address of Bank of Mora, including the postal code?
@@ -219,3 +222,84 @@ nlu:
       - Can you provide some examples of additional services that customers can set up for their savings accounts and how these services can benefit them?
       - What options are available for accessing and managing the savings account, and are there any fees associated with these services?
       - Are there any specific requirements or qualifications for applicants, such as age restrictions or citizenship status, when opening a savings account with Bank of Mora?
+  - intent: deny
+    examples: |
+      - not really
+      - no
+      - I don't think so
+      - never
+      - no way
+      - nope
+      - no thanks
+      - I dunno
+      - Nothing!
+      - nevermind
+      - n
+      - i decline
+      - i don not like this
+      - i don't think so
+      - i don't want either of those
+      - i don't want to
+      - i don't want to give you my email
+      - i dont want to
+      - i dont want to accept :P lol
+      - i guess it means - no
+      - i'm afraid not
+      - i'm not sure
+  - intent: goodbye
+    examples: |
+      - see you later
+      - goodbye
+      - i'm done
+      - quit
+      - stop
+      - bye
+      - Adios
+      - BYEE
+      - GOODBYE
+      - Thanks a lot. See ya later
+      - have a good day. time to go, bye
+      - bye bye
+      - ok i gtg
+      - bye bye bot
+      - bye for now
+      - bye udo
+      - bye was nice talking to you
+      - bye!
+      - byee
+      - catch you later
+      - ciao
+      - cya
+      - farewell
+      - good bye
+      - good bye rasa bot!
+      - good night
+      - goodbye
+      - goodbye.
+      - goodnight
+      - gotta go
+  - intent: greet
+    examples: |
+      - yo
+      - good morning
+      - hi
+      - hey there
+      - hey
+      - good evening
+      - hello
+      - Hello?
+      - HEY
+      - hello are you still there
+      - hallo
+      - HI
+      - Hey
+      - Hi
+      - hi!
+      - hello there
+      - hi there
+      - Hello
+      - hello its ella
+      - Hola.
+      - welcome
+      - howdy
+      - good day
