@@ -66,7 +66,7 @@ Password:
 
 Replicate API TOKEN: 
 ``` bash
-r8_3HKUEnH4PKx42QQIVjSLRyxhuXLimLL39mBtL 
+r8_.... 
 ```
 
 Open a command prompt
