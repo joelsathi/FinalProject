@@ -31,11 +31,25 @@ The Localized Chatbot for Bank Customer Care project aims to develop an intellig
 ### English 
 ![English](./screenshots/english.png)
 
-### Sinhala 
+<table align="center">
+  <tr>
+    <td align="center">
+     <h1 style="text-align:center;">Sinhala</h1>
+      <img src="https://github.com/joelsathi/FinalProject/blob/7b482f5839a221fc5951182e53ac2ede3e80e1a4/screenshots/sinhala.png" width="450" alt="Image 1">     
+    </td>
+    <td align="center">
+      <h1 style="text-align:center;">Tamil</h1>
+      <img src="https://github.com/joelsathi/FinalProject/blob/7b482f5839a221fc5951182e53ac2ede3e80e1a4/screenshots/tamil.png" width="450" alt="Image 2">
+    </td>
+  </tr>
+</table>
+
+
+<!--### Sinhala 
 ![Sinhala](./screenshots/sinhala.png)
 
 ### Tamil
-![Tamil](./screenshots/tamil.png)
+![Tamil](./screenshots/tamil.png)  -->
 
 ## Get Started
 
