@@ -18,6 +18,24 @@ The Localized Chatbot for Bank Customer Care project aims to develop an intellig
 - Joel Sathiyendra Thiyaheswaran(200590J)
 - Sandaruth Siriwardana(200607V)
 
+## Features
+
+- Can be used in Sinhala or Tamil or English.
+- Connected to real time database. Users can ask questions about their account details.
+- Users can ask questions about the bank services. The static data (i.e Data which does not change with time. Eg. Bank account opening procedures, loan procedures, bank history etc.) is stored in the vector database.
+- Chatbot is restricted to the banking domain. It will not answer questions which are not related to banking.
+(Sometimes, the LLM might hallucinate and answer questions which are not related to banking. We are working on it)
+
+## Screenshots of Application
+
+### English 
+![English](./screenshots/english.png)
+
+### Sinhala 
+![Sinhala](./screenshots/sinhala.png)
+
+### Tamil
+![Tamil](./screenshots/tamil.png)
 
 ## Get Started
 
@@ -53,7 +71,7 @@ Login details for the chatbot
 
 Email:
 ``` bash
-sada@gmail.com  
+sada@gmail.com
 ```
 <br>
 
