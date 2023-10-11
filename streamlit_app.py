@@ -11,7 +11,10 @@ st.session_state.token = None
 # Replicate Credentials
 with st.sidebar:
     # st.title("🤖🏦 BotMora")
-    st.markdown("<h1 style='text-align: center; font-size:40px;'>🤖🏦 BotMora</h1>", unsafe_allow_html=True)
+    st.markdown(
+        "<h1 style='text-align: center; font-size:40px;'>🤖🏦 BotMora</h1>",
+        unsafe_allow_html=True,
+    )
 
     st.markdown("***")
     # st.text("")
@@ -38,10 +41,10 @@ with st.sidebar:
                     st.session_state.token = token
             except:
                 token = None
-            
+
             if st.session_state.token:
                 st.success("Login successful.", icon="✅")
-                
+
                 col11, col21, col31 = st.sidebar.columns((2, 2, 2))
                 if col21.button("Logout"):
                     # Remove the token from the Streamlit session state
@@ -61,7 +64,7 @@ with st.sidebar:
             st.warning("Please enter your credentials!", icon="⚠️")
         else:
             st.success("Proceed to entering your prompt message!", icon="👉")
-    
+
     selected_language = st.sidebar.selectbox(
         "Select the preferred language",
         ["English", "Tamil", "Sinhala"],
@@ -77,7 +80,11 @@ with st.sidebar:
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():
     st.session_state.messages = [
-        {"role": "assistant", "content": "How may I assist you today?", "translated": translate_to_lang("How may I assist you today?", "en", lang)}
+        {
+            "role": "assistant",
+            "content": "How may I assist you today?",
+            "translated": translate_to_lang("How may I assist you today?", "en", lang),
+        }
     ]
 
 # Display or clear chat messages
@@ -98,6 +105,7 @@ def clear_chat_history():
 col1, col2, col3 = st.sidebar.columns((0.5, 2, 0.5))
 col2.button("Clear Chat History", on_click=clear_chat_history)
 
+
 def get_assistant_response(prompt_input):
     output, eng_response = get_response(
         prompt_input,
@@ -109,9 +117,13 @@ def get_assistant_response(prompt_input):
 
 
 # User-provided prompt
-if prompt := st.chat_input(disabled=(not replicate_api) or (not st.session_state.token)):
+if prompt := st.chat_input(
+    disabled=(not replicate_api) or (not st.session_state.token)
+):
     translated_user_input = translate_to_lang(prompt, lang, "en")
-    st.session_state.messages.append({"role": "user", "content": translated_user_input, "translated": prompt})
+    st.session_state.messages.append(
+        {"role": "user", "content": translated_user_input, "translated": prompt}
+    )
     with st.chat_message("user"):
         st.write(prompt)
 
@@ -124,3 +136,64 @@ if st.session_state.messages[-1]["role"] != "assistant":
             placeholder.markdown(response)
     message = {"role": "assistant", "content": eng_response, "translated": response}
     st.session_state.messages.append(message)
+
+#     # Store LLM generated responses
+# if "messages" not in st.session_state.keys():
+#     # st.session_state.messages = [
+#     #     {"role": "assistant", "content": "How may I assist you today?", "translated": translate_to_lang("How may I assist you today?", "en", lang)}
+#     # ]
+
+#     st.session_state.messages = [
+#         {"role": "assistant", "content": "How may I assist you today?"}
+#     ]
+
+# # Display or clear chat messages
+# for message in st.session_state.messages:
+#     with st.chat_message(message["role"]):
+#         if "translated" in message.keys():
+#             st.write(message["translated"])
+#         else:
+#             st.write(message["content"])
+
+
+# def clear_chat_history():
+#     st.session_state.messages = [
+#         {"role": "assistant", "content": "How may I assist you today?"}
+#     ]
+
+
+# col1, col2, col3 = st.sidebar.columns((0.5, 2, 0.5))
+# col2.button("Clear Chat History", on_click=clear_chat_history)
+
+
+# def get_assistant_response(prompt_input):
+#     output, eng_response = get_response(
+#         prompt_input,
+#         st.session_state.messages,
+#         token=st.session_state.token,
+#         translate_to=lang,
+#     )
+#     return output, eng_response
+
+
+# # User-provided prompt
+# if prompt := st.chat_input(
+#     disabled=(not replicate_api) or (not st.session_state.token)
+# ):
+#     # translated_user_input = translate_to_lang(prompt, lang, "en")
+#     st.session_state.messages.append(
+#         # {"role": "user", "content": translated_user_input, "translated": prompt}
+#         {"role": "user", "content": prompt}
+#     )
+#     with st.chat_message("user"):
+#         st.write(prompt)
+
+# # Generate a new response if last message is not from assistant
+# if st.session_state.messages[-1]["role"] != "assistant":
+#     with st.chat_message("assistant"):
+#         with st.spinner("Thinking..."):
+#             response, eng_response = get_assistant_response(prompt)
+#             placeholder = st.empty()
+#             placeholder.markdown(response)
+#     message = {"role": "assistant", "content": response}
+#     st.session_state.messages.append(message)
