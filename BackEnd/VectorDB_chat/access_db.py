@@ -15,4 +15,4 @@ def search_similarity(query):
     for chunk in docs:
         context += chunk.page_content + "\n"
 
-    return context, docs
+    return context
