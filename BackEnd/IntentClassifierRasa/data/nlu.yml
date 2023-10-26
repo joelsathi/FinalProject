@@ -35,9 +35,6 @@ nlu:
       - I need to access my account information.
       - Tell me about my recent account activity.
       - Provide me with my account history.
-
-  - intent: Account_balance
-    examples: |
       - Can you check my account balance?
       - What's the current balance in my account?
       - I need to find out how much money I have in my account.
@@ -68,9 +65,6 @@ nlu:
       - Tell me the balance in my account right now.
       - Provide me with the current account balance.
       - I need information on my account's available funds.
-
-  - intent: Account_type
-    examples: |
       - What type of account do I have?
       - Can you tell me the account type associated with my account?
       - I'm curious about the account type for my account.
@@ -81,9 +75,6 @@ nlu:
       - Which account category does my account fall into?
       - I'd like to know the account classification for my account.
       - Is my account considered a personal or business account?
-
-  - intent: Account_holder_name
-    examples: |
       - What is the full name of the account holder?
       - Can you share the account holder's name for my account?
       - Whose name is listed as the account holder on my account?
@@ -94,9 +85,6 @@ nlu:
       - What is the name associated with this account?
       - Tell me the full name of the person on the account.
       - Who is the primary account holder for this account?
-
-  - intent: Account_emailaddress
-    examples: |
       - What is the email address of the primary account holder?
       - Can you share the email address associated with my account?
       - What email address is linked to my account?
@@ -107,9 +95,6 @@ nlu:
       - What is the email used for account notifications?
       - Give me the email address registered for this account.
       - Tell me the email contact for this account.
-
-  - intent: Account_number
-    examples: |
       - What is the specific account number associated with my account?
       - Can you provide me with my complete account number?
       - Where can I find my account number?
@@ -222,6 +207,135 @@ nlu:
       - Can you provide some examples of additional services that customers can set up for their savings accounts and how these services can benefit them?
       - What options are available for accessing and managing the savings account, and are there any fees associated with these services?
       - Are there any specific requirements or qualifications for applicants, such as age restrictions or citizenship status, when opening a savings account with Bank of Mora?
+
+  - intent: exchange_rates
+    examples: |
+      - I need to convert some Euros (EUR) to US Dollars (USD); what's the current exchange rate?
+      - What's the rate for changing British Pounds (GBP) to Australian Dollars (AUD)?
+      - Can you give me the exchange rate for 1000 Chinese Yuan (CNY) to Japanese Yen (JPY)?
+      - Tell me the current buying and selling rates for Swiss Francs (CHF) to Canadian Dollars (CAD).
+      - What's the rate for converting 5000 Indian Rupees (INR) to Singapore Dollars (SGD)?
+      - How much do I get for 1 Canadian Dollar (CAD) in British Pounds (GBP)?
+      - I'd like to exchange some US Dollars (USD) for Thai Baht (THB); what's the rate today?
+      - What's the current exchange rate for South African Rand (ZAR) to Euro (EUR)?
+      - Can you provide the buying rate for New Zealand Dollars (NZD) to Japanese Yen (JPY)?
+      - Tell me the selling rate for 1000 Korean Won (KRW) to US Dollars (USD).
+      - What's the rate for converting 10,000 Mexican Pesos (MXN) to Swiss Francs (CHF)?
+      - I want to know the exchange rate for Canadian Dollars (CAD) to British Pounds (GBP); can you help?
+      - Give me the current rates for British Pounds (GBP) to Indian Rupees (INR) and Australian Dollars (AUD).
+      - What's the buying rate for US Dollars (USD) to Euro (EUR) compared to Japanese Yen (JPY)?
+      - Tell me the exchange rate for 100 Euros (EUR) to Chinese Yuan (CNY) and Thai Baht (THB).
+      - What is the exchange rate for USD to EUR right now?
+      - Tell me the current buying and selling rates for Japanese Yen (JPY) to USD.
+      - I'd like to know the exchange rate for GBP to CAD at this moment.
+      - Can you provide me with the buying rate for Euro (EUR) to USD?
+      - What's the current exchange rate for Indian Rupees (INR) to Chinese Yuan (CNY)?
+      - How much is 1 USD in Swiss Francs (CHF) today?
+      - What is the selling rate for Australian Dollars (AUD) to Euro (EUR)?
+      - Give me the exchange rate for Mexican Peso (MXN) to Canadian Dollar (CAD).
+      - I want to convert British Pounds (GBP) to Japanese Yen (JPY); what are the rates?
+      - What's the buying rate for Canadian Dollars (CAD) to Swiss Francs (CHF)?
+      - Tell me the exchange rate for 1000 Japanese Yen (JPY) to US Dollars (USD).
+      - Can you compare the buying rates for Euro (EUR) and British Pound (GBP)?
+      - What's the selling rate for Singapore Dollars (SGD) to Australian Dollars (AUD)?
+
+  - intent: savings_rates
+    examples: |
+      - What is the current interest rate for a regular savings account?
+      - Tell me the interest rate for a basic savings account.
+      - I'd like to know the annual interest rate for a children's savings account.
+      - Can you provide me with the latest interest rates for a high-yield savings account?
+      - How much interest do I earn on a senior savings account?
+      - What's the rate on your online savings account?
+      - I want to compare the interest rates for a fixed-rate and variable-rate savings account.
+      - Please tell me the interest rate for a joint savings account.
+      - What are the interest rates for a 3-month, 6-month, and 12-month savings account?
+      - Give me the interest rate for a retirement savings account.
+      - What's the rate for a tax-free savings account?
+      - Can you provide the interest rates for a college savings account?
+      - Tell me the interest rate for a health savings account (HSA).
+      - I'm interested in a savings account for my business; what are the rates?
+      - What's the interest rate for a savings account specifically for first-time homebuyers?
+      - I'm looking to open a new savings account; can you tell me the current interest rate?
+      - What's the annual percentage yield (APY) for a basic savings account?
+      - I want to know the interest rate on your regular savings account.
+      - Can you provide me with the interest rates for various term savings accounts?
+      - How much interest can I earn on a kids' savings account?
+      - What's the interest rate for a student savings account?
+      - Tell me the rate for a tiered savings account, please.
+      - I'm interested in your special savings account; what's the current interest rate.
+      - What's the difference between a regular savings account and a high-yield savings account in terms of interest rates?
+      - Can you give me the rates for a 1-year and 2-year savings account?
+      - What's the interest rate for a Christmas Club savings account?
+      - Tell me the rates for a money market savings account.
+      - I'd like to compare the interest rates for a standard savings account and a premium savings account.
+      - What are the rates for a long-term certificate of deposit (CD) compared to a traditional savings account?
+      - Can you provide the interest rate for a savings account designed for emergency funds?
+
+  - intent: fixed_rates
+    examples: |
+      - What is the current interest rate for a 1-year fixed deposit?
+      - Tell me the interest rate for a 3-year fixed deposit.
+      - I'd like to know the annual interest rate for a 5-year fixed deposit.
+      - Can you provide me with the latest interest rates for a 6-month fixed deposit?
+      - How much interest do I earn on a 12-month fixed deposit?
+      - What's the rate on your 24-month fixed deposit?
+      - I want to compare the interest rates for a 2-year and 4-year fixed deposit.
+      - Please tell me the interest rate for a 10-year fixed deposit.
+      - What are the interest rates for a 1-month, 2-month, and 3-month fixed deposit?
+      - Give me the interest rate for a senior citizen fixed deposit.
+      - What's the rate for a tax-saving fixed deposit?
+      - Can you provide the interest rates for a corporate fixed deposit?
+      - Tell me the interest rate for a non-cumulative fixed deposit.
+      - I'm interested in a fixed deposit for my child's education; what are the rates?
+      - What's the interest rate for a special fixed deposit offer?
+      - I'm looking to invest in a fixed deposit; can you tell me the current interest rate?
+      - What's the annual percentage yield (APY) for a 7-year fixed deposit?
+      - I want to know the interest rate on your 3-month fixed deposit.
+      - Can you provide me with the interest rates for various term fixed deposits?
+      - How much interest can I earn on a 9-month fixed deposit?
+      - What's the interest rate for a non-resident fixed deposit?
+      - Tell me the rate for a senior citizen fixed deposit, please.
+      - I'm interested in your special fixed deposit; what's the current interest rate.
+      - What's the difference between a regular fixed deposit and a senior citizen fixed deposit in terms of interest rates?
+      - Can you give me the rates for a 15-month fixed deposit?
+      - What's the interest rate for a fixed deposit for a charitable organization?
+      - Tell me the rates for a tax-saving fixed deposit for women.
+      - I'd like to compare the interest rates for a 6-month and 9-month fixed deposit.
+      - What are the rates for a 4-year and 5-year fixed deposit?
+
+  - intent: loan_rates
+    examples: |
+      - What is the current interest rate for a personal loan?
+      - Tell me the interest rate for a car loan.
+      - I'd like to know the annual percentage rate (APR) for a home mortgage.
+      - Can you provide me with the latest interest rates for a student loan?
+      - How much interest is charged on a business loan?
+      - What's the rate for an unsecured personal line of credit?
+      - I want to compare the interest rates for a fixed-rate and variable-rate loan.
+      - Please tell me the interest rate for an education loan.
+      - What are the interest rates for a 3-year, 5-year, and 10-year home loan?
+      - Give me the interest rate for a construction loan.
+      - What's the rate for a small business loan?
+      - Can you provide the interest rates for an auto loan?
+      - Tell me the interest rate for a medical loan.
+      - I'm interested in a loan for debt consolidation; what are the rates?
+      - What's the interest rate for a personal installment loan?
+      - I'm looking to finance a home improvement project; can you tell me the current interest rate?
+      - What's the annual percentage yield (APY) for a boat loan?
+      - I want to know the interest rate on your motorcycle loan.
+      - Can you provide me with the interest rates for various term auto loans?
+      - How much interest can I expect to pay on a 15-year fixed-rate mortgage?
+      - What's the interest rate for a construction-to-permanent loan?
+      - Tell me the rate for a business line of credit, please.
+      - I'm interested in your business expansion loan; what's the current interest rate.
+      - What's the difference between a fixed-rate and adjustable-rate mortgage in terms of interest rates?
+      - Can you give me the rates for a 36-month personal loan?
+      - What's the interest rate for a recreational vehicle (RV) loan?
+      - Tell me the rates for a debt consolidation loan for veterans.
+      - I'd like to compare the interest rates for a 48-month and 60-month auto loan.
+      - What are the rates for a 7-year and 15-year home equity loan?
+
   - intent: deny
     examples: |
       - not really
