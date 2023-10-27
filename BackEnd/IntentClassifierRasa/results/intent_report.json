@@ -1,9 +1,9 @@
 {
-  "exchange_rates": {
+  "goodbye": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 28,
+    "support": 29,
     "confused_with": {}
   },
   "greet": {
@@ -13,11 +13,11 @@
     "support": 23,
     "confused_with": {}
   },
-  "vectorDb": {
+  "exchange_rates": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 99,
+    "support": 28,
     "confused_with": {}
   },
   "fixed_rates": {
@@ -34,6 +34,20 @@
     "support": 30,
     "confused_with": {}
   },
+  "Account_details": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 101,
+    "confused_with": {}
+  },
+  "Transactions": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 47,
+    "confused_with": {}
+  },
   "deny": {
     "precision": 1.0,
     "recall": 1.0,
@@ -48,18 +62,11 @@
     "support": 29,
     "confused_with": {}
   },
-  "Account_details": {
+  "vectorDb": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 101,
-    "confused_with": {}
-  },
-  "goodbye": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 29,
+    "support": 99,
     "confused_with": {}
   },
   "accuracy": 1.0,
@@ -67,18 +74,18 @@
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 390
+    "support": 437
   },
   "weighted avg": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 390
+    "support": 437
   },
   "micro avg": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 390
+    "support": 437
   }
 }

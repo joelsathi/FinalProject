@@ -116,6 +116,7 @@ Run the following command to start the Rasa server for the chatbot.
 ```bash
 rasa run --enable-api -m models/20230901-131720-reduced-shark.tar.gz
 rasa run --enable-api -m models/20231026-164413-clean-outlet.tar.gz
+rasa run --enable-api -m models/20231027-141720-flat-range.tar.gz
 ```
 
 Open a new command prompt and run the following command to start the action server.

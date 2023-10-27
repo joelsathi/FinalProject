@@ -106,6 +106,56 @@ nlu:
       - I'd like to verify my account with the account number.
       - Share the account identifier for this account.
 
+  - intent: Transactions
+    examples: |
+      - I need to check my recent 5 transactions.
+      - What are my recent transactions?
+      - Can you provide me with my transaction history?
+      - I'd like to see my recent transactions.
+      - How can I access my transaction history?
+      - Tell me more about my recent transactions.
+      - I'm looking for my transaction details.
+      - Where can I find my transaction information?
+      - Please give me an update on my recent transactions.
+      - What's the status of my recent transactions?
+      - Provide me with my transaction summary.
+      - I need to review my recent transactions.
+      - Give me a breakdown of my recent transactions.
+      - Can you share my recent transactions?
+      - I want to see my recent transactions.
+      - Share my recent transaction history with me.  
+      - I'm interested in my recent transactions.
+      - Let's talk about my recent transactions.
+      - Show me my recent transaction information.
+      - Can you show me my last 5 transactions?
+      - I'd like to see details of my last five transactions, please.
+      - What are my five most recent transactions?
+      - Display my recent 5 purchases.
+      - Show me the last 5 entries in my transaction history.
+      - Can you provide information on my last 5 financial transactions?
+      - I need a summary of my most recent 5 transactions.
+      - Show me the details of my last 5 payments.
+      - Tell me about my last five transaction records.
+      - Give me an update on my recent 5 transactions.
+      - Share my most recent 5 transaction details with me.
+      - Can you list my last 5 transactions?
+      - I'm interested in my last 5 financial activities.
+      - Let's talk about my last 5 transactions.
+      - Provide details on my last 5 recent transactions.
+      - Share my last 5 transaction history with me.
+      - I want to review my last 5 transactions.
+      - What are my last 5 financial entries?
+      - Show me my last 5 transaction information.
+      - Give me information on my last 5 transactions.
+      - Share my last 5 financial transaction records.
+      - Can you display the last 5 transactions in my account?
+      - I'd like to know about my last 5 recent payments.
+      - Show my last 5 transaction summaries.
+      - Provide a report on my last 5 transaction records.
+      - Share my last 5 transaction breakdown with me.
+      - I need an overview of my last 5 financial transactions.
+      - Tell me about the last 5 transactions in my account.
+
   - intent: vectorDb
     examples: |
       - What types of savings accounts does Bank of Mora offer, and how are they tailored to customers' needs?

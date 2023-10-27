@@ -6,11 +6,7 @@ intents:
   - savings_rates
   - fixed_rates
   - loan_rates
-  # - Account_balance
-  # - Account_number
-  # - Account_emailaddress
-  # - Account_holder_name
-  # - Account_type
+  - Transactions
   - vectorDb
   - deny
   - goodbye
