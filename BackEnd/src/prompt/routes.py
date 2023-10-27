@@ -9,5 +9,7 @@ prompt_router = APIRouter(
 
 @prompt_router.post("/")
 async def get_response(response: Response, request:Request):
-    user_input = request['user_msg']
-    jwt_token = request['token']
+    req_json = await request.json()
+    user_input = req_json['user_msg']
+    # jwt_token = request['token']
+    return {"message": "Welcome Joel!"}

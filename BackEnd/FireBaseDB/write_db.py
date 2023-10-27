@@ -3,21 +3,7 @@ from datetime import datetime
 import hashlib  # For password hashing
 import json
 
-firebaseConfig = {
-  "apiKey": "AIzaSyDTrPMLJ9PnNqPPiY4KETnMAkNXSDVf1iM",
-  "authDomain": "botmora-25373.firebaseapp.com",
-  "databaseURL": "https://botmora-25373-default-rtdb.firebaseio.com",
-  "projectId": "botmora-25373",
-  "storageBucket": "botmora-25373.appspot.com",
-  "messagingSenderId": "223313770308",
-  "appId": "1:223313770308:web:bdb2bb2e428ddf11a70911",
-  "measurementId": "G-ZPYWSE9S0J"
-}
-
-firebase=pyrebase.initialize_app(firebaseConfig)
-pyrebase_db=firebase.database()
-
-auth = firebase.auth()
+from .access_db import auth, pyrebase_db
 
 # Function to save chat data for a specific user
 def save_chat_data(User_msg,Assistance_msg, intent,accountNumber):
