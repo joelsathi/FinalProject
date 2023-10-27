@@ -1,12 +1,15 @@
 import replicate
 import os
+# from stop_word_remover import prompt_without_stop_words
 
 REPLICATE_API_TOKEN = "r8_3HKUEnH4PKx42QQIVjSLRyxhuXLimLL39mBtL"
 os.environ['REPLICATE_API_TOKEN'] = REPLICATE_API_TOKEN
 
-def get_output_llm(prompt, temperature=0.5, top_p=0.8, max_length=512, repetition_penalty=1):
-    # llm = 'a16z-infra/llama7b-v2-chat:4f0a4744c7295c024a1de15e1a63c880d3da035fa1f49bfd344fe076074c8eea'
-    llm = "a16z-infra/llama-2-13b-chat:9dff94b1bed5af738655d4a7cbcdcde2bd503aa85c94334fe1f42af7f3dd5ee3"
+def get_output_llm(prompt, temperature=0.1, top_p=0.8, max_length=512, repetition_penalty=1):
+    llm = 'a16z-infra/llama7b-v2-chat:4f0a4744c7295c024a1de15e1a63c880d3da035fa1f49bfd344fe076074c8eea'
+    # llm = "a16z-infra/llama-2-13b-chat:9dff94b1bed5af738655d4a7cbcdcde2bd503aa85c94334fe1f42af7f3dd5ee3"
+
+    # prompt_after_removing_stop_words = prompt_without_stop_words(prompt)
 
     output = replicate.run(llm, 
                            input={"prompt": prompt,
@@ -21,6 +24,7 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
                                     User: {user_msg}
                                     You should use the following context to answer the question
                                     Context: {context}
+                                    If the context doesn't provide any relevant information, answer with [I am a banking chatbot, I am not trained to answer this question.]
                                     Finish the Answer as the assistant:
                                     Assistant:
                                     """
@@ -30,6 +34,7 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
                                     User: {user_msg}
                                     The following context is provided to you to answer the question
                                     Context: {db_ans}
+                                    If the context doesn't provide any relevant information, answer with [I am a banking chatbot, I am not trained to answer this question.]
                                     Formulate the answer using the context provided and answer the question as the assistant:
                                     Assistant:
                                     """
@@ -54,13 +59,13 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
     answer_flag = True
     for dict_message in past_msgs:
         if dict_message["role"] == "user":
-            if l - cnt <= 6:
+            if l - cnt <= 2:
                 chat_history += "User: " + dict_message["content"] + "\n\n"
         else:
-            if l - cnt <= 6:
+            if l - cnt <= 2:
                 chat_history += "Assistant: " + dict_message["content"] + "\n\n"
         cnt += 1
-    
+    # chat_history = ""
     if context != "":
         string_dialogue = answer_using_context_template.format(chat_history=chat_history, user_msg=user_input, context=context)
     elif db_ans != "":
@@ -81,5 +86,7 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
         output = get_output_llm(prompt=string_dialogue)
         response = ""
         for item in output:
+            if str(item)[:4].lower() == "user":
+                break
             response += str(item)
     return response

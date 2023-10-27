@@ -12,6 +12,9 @@ async def get_response(user_msg, token):
 
     if intent == "Account_details":
         db_context = GetAccountDetails(token['localId'])
+    elif intent == "Transaction_history":
+        # db_context = GetTransactionHistory(token['localId'])
+        pass
     elif intent == "Interest_rates":
         # db_context = GetInterestRates()
         pass

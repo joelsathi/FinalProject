@@ -3,3 +3,4 @@
 /BackEnd/VectorDB/__pycache__
 /BackEnd/IntentClassifierRasa/__pycache__
 /BackEnd/IntentClassifierRasa/.rasa/cache
+/BackEnd/.env

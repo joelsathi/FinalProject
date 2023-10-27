@@ -8,5 +8,6 @@ prompt_router = APIRouter(
 )
 
 @prompt_router.post("/")
-async def get_response(prompt: PromptModel):
-    user_input = prompt.prompt
+async def get_response(response: Response, request:Request):
+    user_input = request['user_msg']
+    jwt_token = request['token']
