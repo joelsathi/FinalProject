@@ -2,7 +2,7 @@ import json
 from fastapi import APIRouter, Response, status, Request, HTTPException, Header, Form, Depends
 from fastapi.responses import JSONResponse
 from .models import UserModel
-from FireBaseDB.access_db import GetAccountDetails, auth
+from FireBaseDB.access_db import GetAccountDetails, auth, GetAccountEmail, GetAccountName
 from fastapi.security import OAuth2PasswordBearer
 from FireBaseDB.access_db import get_latest_chat_history
 
@@ -21,7 +21,19 @@ async def login(request: Request):
        return JSONResponse(content={'token': jwt}, status_code=200)
    except:
        return HTTPException(detail={'message': 'There was an error logging in'}, status_code=400)
-   
+
+@user_router.get("/auth-status", include_in_schema=False)
+async def checkStatus(request: Request):
+    req_json = await request.json()
+    jwt = req_json['token']
+    try:
+        token = auth.refresh(jwt)
+        name = GetAccountEmail(token['userId'])
+        email = GetAccountEmail(token['userId'])
+        return JSONResponse(content={'token':jwt, 'email':email, 'name':name}, status_code=200)
+    except:
+        return JSONResponse(content={'status': 'Error logging in'}, status_code=400)
+
 @user_router.get("/past_conversations", include_in_schema=False)
 async def get_past_conversations(request: Request):
     req_json = await request.json()
@@ -32,6 +44,6 @@ async def get_past_conversations(request: Request):
         # return JSONResponse(content={'token': user}, status_code=200)
         account_number = user['userId']
         chat_history = get_latest_chat_history(account_number, limit=5)
-        return JSONResponse(content={'token': jwt, 'history': chat_history}, status_code=200)
+        return JSONResponse(content={'token': jwt, 'chat': chat_history}, status_code=200)
     except:
         return HTTPException(detail={'message': 'There was an error logging in'}, status_code=400)
