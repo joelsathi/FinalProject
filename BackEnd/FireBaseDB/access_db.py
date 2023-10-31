@@ -75,8 +75,13 @@ def convert_to_desired_format(chat_history):
         }
         formatted_chats.append(user_msg)
         formatted_chats.append(assistant_msg)
+    # convert the list of dictionaries to a JSON object
 
-    return {"chats": formatted_chats}
+    cur = {"chats": formatted_chats}
+
+    json_object = json.dumps(cur, indent=2)
+
+    return json_object
 
 def get_latest_chat_history(user_id, limit=5):
     try:
@@ -88,7 +93,7 @@ def get_latest_chat_history(user_id, limit=5):
             formatted_data = convert_to_desired_format(chat_list)
             return formatted_data
         else:
-            return {"chats": []}
+            return json.dumps({"chats": []}, indent=2)
     except Exception as e:
         print(f"Error: {e}")
         return {"error": str(e)}
