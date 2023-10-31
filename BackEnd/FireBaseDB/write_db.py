@@ -77,3 +77,5 @@ def add_FAQ_count(intent):
     # Set the updated positive count back in the database
     pyrebase_db.child("FAQ").child(intent).child("count").set(new_count)
 
+def delete_chat_history(user_id):
+    pyrebase_db.child("chat_history").child(user_id).remove()

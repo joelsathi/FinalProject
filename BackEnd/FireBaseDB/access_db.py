@@ -19,14 +19,18 @@ pyrebase_db=firebase.database()
 
 auth = firebase.auth()
 
-
 # Get Balance of Account
 def GetBalance(accountNumber):
     return pyrebase_db.child("Account").child(accountNumber).child("balance").get().val()
 
 # Get Account Details ---------------------------------------------
 def GetAccountDetails(accountNumber):
-   return pyrebase_db.child("Account").child(accountNumber).get().val()
+    balance = pyrebase_db.child("Account").child(accountNumber).child("balance").get().val()
+    name = pyrebase_db.child("Account").child(accountNumber).child("name").get().val()
+    account_type = pyrebase_db.child("Account").child(accountNumber).child("account_type").get().val()
+    email = pyrebase_db.child("Account").child(accountNumber).child("email").get().val()
+
+    return f"Name: {name} Account Type: {account_type} Email: {email} Balance: {balance}"
 
 # Get account number of user ---------------------------------------------
 def GetAccountNumber(accountNumber):
