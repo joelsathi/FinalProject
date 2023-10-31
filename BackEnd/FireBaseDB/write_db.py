@@ -2,6 +2,13 @@ import pyrebase
 from datetime import datetime
 import hashlib  # For password hashing
 import json
+import numpy
+import sklearn
+from sklearn.metrics.pairwise import cosine_similarity
+from sentence_transformers import SentenceTransformer
+
+# Load the Sentence Transformers model
+model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
 # from access_db import auth, pyrebase_db
 firebaseConfig = {
@@ -101,82 +108,30 @@ def add_FAQ_count(intent):
     pyrebase_db.child("FAQ").child(intent).child("count").set(new_count)
 
 
-import numpy
-import sklearn
-from sklearn.metrics.pairwise import cosine_similarity
-from sentence_transformers import SentenceTransformer
-
-# Load the Sentence Transformers model
-model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
-
-
-def similarity(question):
-    ques_list = {
-        "Can you provide me with my current account balance and account type details?": 0,
-        "Can you show me the details of my last 5 financial transactions?": 0,
-        "What is the procedure to open a savings account?": 0,
-        "What is the current exchange rate for converting US Dollars (USD) to Sri Lankan Rupees (LKR)?": 0,
-        "What is the current interest rate for a savings account?": 0,
-        "Can you provide the current interest rate for a 1-year fixed deposit?": 0,
-        "What is the current interest rate for a personal loan?": 0,
-    }
-
-    max_value = -1
-
-    for ques in ques_list:
-        embeddings = model.encode([question, ques])
-        similarity_value = cosine_similarity(embeddings)[0, 1]
-        if similarity_value > max_value:
-            max_value = similarity_value
-            select = ques
-
-    if max_value > 0.4:
-        ques_list[select] = ques_list[select] + 1
-    else:
-        select = question
-        ques_list[question] = 1
-
-    print(ques_list)
-
-    return ques_list
-
-
-# similarity("How to open a savings account?")
-
-
 def add_FAQ_count(question):
     # First, retrieve the current positive count
     current_count_dict = pyrebase_db.child("FAQ").get().val()
     max_value = -1
 
-    for ques in current_count_dict:
-        embeddings = model.encode([question, ques])
+    for key, value in current_count_dict.items():
+        question_text = value["question"]
+        embeddings = model.encode([question, question_text])
         similarity_value = cosine_similarity(embeddings)[0, 1]
         if similarity_value > max_value:
+            key_value = key
             max_value = similarity_value
-            select = ques
+            select = question_text
 
     if max_value > 0.4:
-        cur_count = current_count_dict[select] + 1
+        cur_count = current_count_dict[key_value]["count"] + 1
+        pyrebase_db.child("FAQ").child(key_value).child("count").set(cur_count)
+
     else:
+        key_value = "new_question"
         select = question
         cur_count = 1
-
-    # pyrebase_db.child("FAQ").child(select).child("count").set(cur_count)
-    # pyrebase_db.child("FAQ").child(select).child("count").set(cur_count)
-
-
-# ============= need to have a look ================
-add_FAQ_count("How much is 1 USD in LKR?")
+        pyrebase_db.child("FAQ").child(key_value).child("question").set(select)
+        pyrebase_db.child("FAQ").child(key_value).child("count").set(cur_count)
 
 
-# if current_count is not None:
-#     current_count = current_count.val()
-# else:
-#     current_count = 0
-
-# # Increment the positive count by 1
-# new_count = current_count + 1
-
-# # Set the updated positive count back in the database
-# pyrebase_db.child("FAQ").child(ques).child("count").set(new_count)
+# add_FAQ_count("How to open a savings account?")
