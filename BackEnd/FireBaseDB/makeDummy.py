@@ -140,3 +140,32 @@ def CreateLoanRates(name, interest_rate, maximum_amount, repayment_period):
 # CreateLoanRates("Personal Loan", 8.5, 500000, 5)
 # CreateLoanRates("Vehicle Loan", 9.5, 1000000, 10)
 # CreateLoanRates("Education Loan", 6.5, 1000000, 10)
+
+
+# Create DateStamp
+def CreateTime():
+    current_datetime = datetime.now()
+    # transactionRecipient = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
+
+    time_data = {
+        "count": 1,
+    }
+    db.child("Time_stamp").child(current_datetime.strftime("%H")).set(time_data)
+    db.child("Time_stamp").child(current_datetime.strftime("%A")).set(time_data)
+    # return accountNumber
+
+
+# weekdays = [
+#     "Monday",
+#     "Tuesday",
+#     "Wednesday",
+#     "Thursday",
+#     "Friday",
+#     "Saturday",
+#     "Sunday",
+# ]
+# numbers = list(range(1, 25))
+# for i in weekdays:
+#     db.child("Time_stamp").child(i).set({"count": 0})
+# for i in numbers:
+#     db.child("Time_stamp").child(str(i)).set({"count": 0})

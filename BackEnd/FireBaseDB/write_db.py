@@ -127,11 +127,24 @@ def add_FAQ_count(question):
         pyrebase_db.child("FAQ").child(key_value).child("count").set(cur_count)
 
     else:
-        key_value = "new_question"
         select = question
         cur_count = 1
-        pyrebase_db.child("FAQ").child(key_value).child("question").set(select)
-        pyrebase_db.child("FAQ").child(key_value).child("count").set(cur_count)
+        question_data = {
+            "question": select,
+            "count": cur_count,
+        }
+
+        pyrebase_db.child("FAQ").push(question_data)
+
+    time = pyrebase_db.child("Time_stamp").get().val()
+
+    day = time[datetime.now().strftime("%A")]
+    count_data = {"count": day["count"] + 1}
+    pyrebase_db.child("Time_stamp").child(datetime.now().strftime("%A")).set(count_data)
+
+    hour = time[datetime.now().strftime("%H")]
+    count_data = {"count": hour["count"] + 1}
+    pyrebase_db.child("Time_stamp").child(datetime.now().strftime("%H")).set(count_data)
 
 
-# add_FAQ_count("How to open a savings account?")
+# add_FAQ_count("What is the contact numeber?")
