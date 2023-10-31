@@ -35,15 +35,20 @@ async def checkStatus(request: Request):
         return JSONResponse(content={'status': 'Error logging in'}, status_code=400)
 
 @user_router.get("/past_conversations", include_in_schema=False)
-async def get_past_conversations(request: Request):
-    req_json = await request.json()
-    # get the token from the headers
-    jwt = req_json['token']
+async def get_past_conversations(request: Request, authorization: str = Header(None)):
+    if authorization is None:
+        raise HTTPException(detail={'message': 'Authorization header is missing'}, status_code=401)
+
+    # Check if the header starts with 'Bearer ' and extract the token
+    if not authorization.startswith('Bearer '):
+        raise HTTPException(detail={'message': 'Invalid Authorization header format'}, status_code=401)
+
+    token = authorization[7:]  # Extract the token part after 'Bearer '
+
     try:
-        user = auth.refresh(jwt)
-        # return JSONResponse(content={'token': user}, status_code=200)
+        user = auth.refresh(token)
         account_number = user['userId']
         chat_history = get_latest_chat_history(account_number, limit=5)
-        return JSONResponse(content={'token': jwt, 'chat': chat_history}, status_code=200)
-    except:
+        return JSONResponse(content={'token': token, 'chats': chat_history}, status_code=200)
+    except Exception as e:
         return HTTPException(detail={'message': 'There was an error logging in'}, status_code=400)
