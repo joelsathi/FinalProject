@@ -62,7 +62,22 @@ def GetTransactions(accountNumber):
       print("No transactions found")
 
 
-# Function to get the latest chat messages for a specific user and return as a JSON object
+def convert_to_desired_format(chat_history):
+    formatted_chats = []
+    for chat_data in chat_history:
+        user_msg = {
+            "role": "user",
+            "content": chat_data["User_msg"]
+        }
+        assistant_msg = {
+            "role": "assistant",
+            "content": chat_data["Assistance_msg"]
+        }
+        formatted_chats.append(user_msg)
+        formatted_chats.append(assistant_msg)
+
+    return {"chats": formatted_chats}
+
 def get_latest_chat_history(user_id, limit=5):
     try:
         chat_history = pyrebase_db.child("chat_history").child(user_id).order_by_child("timestamp").limit_to_last(limit).get()
@@ -70,15 +85,14 @@ def get_latest_chat_history(user_id, limit=5):
         if chat_data:
             chat_list = [chat_data[key] for key in chat_data]
             chat_list.reverse()  # Reverse the list to get the latest messages first
-            # Build a JSON object
-            chat_json = json.dumps({"chat_history": chat_list})
-            return chat_json
+            formatted_data = convert_to_desired_format(chat_list)
+            return formatted_data
         else:
-            return json.dumps({"chat_history": []})
+            return {"chats": []}
     except Exception as e:
         print(f"Error: {e}")
-        return json.dumps({"error": str(e)})
-    
+        return {"error": str(e)}
+   
 # last transactions as a JSON object
 def read_last_transactions(accountNumber, limit=5):
     try:

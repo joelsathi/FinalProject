@@ -13,13 +13,14 @@ from Src.auth.routes import user_router
 from Src.prompt.routes import prompt_router
 
 app = FastAPI()
-allow_all = ['*']
+allow_origins = ["http://localhost:5173"]
+
 app.add_middleware(
-   CORSMiddleware,
-   allow_origins=allow_all,
-   allow_credentials=True,
-   allow_methods=allow_all,
-   allow_headers=allow_all
+    CORSMiddleware,
+    allow_origins=allow_origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # This allows all HTTP methods
+    allow_headers=["*"],  # This allows all headers
 )
 
 app.include_router(user_router)
