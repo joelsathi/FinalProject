@@ -234,7 +234,7 @@ def Get_Exchange_Rates():
 
     # Retrieve the data as a dictionary
     exchange_data = exchange_rates_ref.get().val()
-    print(exchange_data)
+    # print(exchange_data)
 
     # Format the data as a list of lists for tabulation
     table_data = []

@@ -260,6 +260,28 @@ nlu:
 
   - intent: exchange_rates
     examples: |
+      - Can you give me all the available buying and selling rates in your bank?
+      - What are the available buying and selling rates for all currencies?
+      - What are the buying and selling rates for all currencies?
+      - What are the buying and selling rates for all currencies in your bank?
+      - I want to buy some United States Dollars with Sri Lankan Rupees; What is the buying rate?
+      - I want to sell some United States Dollars; What is the selling rate?
+      - I want to buy some Euros with Sri Lankan Rupees; What is the buying rate?
+      - I want to sell some Euros; What is the selling rate?
+      - I want to buy some British Pounds with Sri Lankan Rupees; What is the buying rate?
+      - I want to sell some British Pounds; What is the selling rate?
+      - I want to buy some Australian Dollars with Sri Lankan Rupees; What is the buying rate?
+      - I want to sell some Australian Dollars; What is the selling rate?
+      - I want to get to know the buying and selling rates for Swiss Francs.
+      - I want to get to know the buying and selling rates for Canadian Dollars.
+      - I want to get to know the buying and selling rates for Singapore Dollars.
+      - I want to get to know the buying and selling rates for Japanese Yen.
+      - What is the buying rate for Chinese Yuan?
+      - What is the selling rate for Chinese Yuan?
+      - What is the buying rate for Indian Rupees?
+      - What is the selling rate for Indian Rupees?
+      - What is the buying rate for Korean Won?
+      - What is the selling rate for Korean Won?
       - I need to convert some Euros (EUR) to US Dollars (USD); what's the current exchange rate?
       - What's the rate for changing British Pounds (GBP) to Australian Dollars (AUD)?
       - Can you give me the exchange rate for 1000 Chinese Yuan (CNY) to Japanese Yen (JPY)?

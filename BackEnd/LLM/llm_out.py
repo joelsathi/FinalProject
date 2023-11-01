@@ -1,7 +1,7 @@
 import replicate
 import os
 # from stop_word_remover import prompt_without_stop_words
-from configure import REPLICATE_API_TOKEN
+from .configure import REPLICATE_API_TOKEN
 
 os.environ['REPLICATE_API_TOKEN'] = REPLICATE_API_TOKEN
 
@@ -19,8 +19,6 @@ def get_output_llm(prompt, temperature=0.1, top_p=0.8, max_length=512, repetitio
 
 # Function for generating LLaMA2 response
 def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
-
-    base_prompt = "<s>[INST]\n<<SYS>>\n{system_prompt}\n<</SYS>>\n\n{user_prompt}[/INST]"
 
     answer_using_context_template = """
                                     {chat_history}
@@ -59,6 +57,7 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
                             <<SYS>>
                             You should only answer this question if this question is in the banking domain as the assistant.
                             If this question is not in the banking domain, you should reply, 'I am a banking chatbot, I am not trained to answer this question.', and you should not provide information more on that subject.
+                            If this question is a basic banking calculation, do the calculation and provide the answer. If it is 
                             <</SYS>>
                             {user_msg}
                             [/INST]
@@ -99,5 +98,3 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
         for item in output:
             response += str(item)
     return response
-
-print(REPLICATE_API_TOKEN)

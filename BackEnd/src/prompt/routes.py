@@ -67,16 +67,12 @@ async def get_output_llm(request: Request, authorization: str = Header(None)):
 
     try:
         token = auth.refresh(token)
+        req_json = await request.json()
+
+        user_msg = req_json.get("user_msg")
+        lang = req_json.get("lang")
         try:
-            req_json = await request.json()
-        except:
-            raise HTTPException(status_code=400, detail="Request body is required.")
-        try:
-            user_msg = req_json.get("user_msg")
-        except:
-            raise HTTPException(status_code=400, detail="user_msg is required.")
-        try:
-            response = get_response(user_msg, token)
+            response = get_response(user_msg, token, lang)
             return JSONResponse(content={'data': response}, status_code=200)
         except Exception as e:
             response = f'An error occurred: {str(e)}'

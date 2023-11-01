@@ -114,8 +114,7 @@ cd BackEnd\IntentClassifierRasa\
 Run the following command to start the Rasa server for the chatbot.
 
 ```bash
-rasa run --enable-api -m models/20230901-131720-reduced-shark.tar.gz
-rasa run --enable-api -m models/20231027-141720-flat-range.tar.gz
+rasa run --enable-api -m models/20231101-110640-parallel-ivy.tar.gz
 ```
 
 Open a new command prompt and run the following command to start the action server.
