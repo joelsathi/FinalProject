@@ -3,7 +3,7 @@ from datetime import datetime
 import hashlib  # For password hashing
 import json
 
-from access_db import auth, pyrebase_db
+from .access_db import auth, pyrebase_db
 
 # Function to save chat data for a specific user
 def save_chat_data(User_msg,Assistance_msg, intent,accountNumber):
@@ -79,3 +79,5 @@ def add_FAQ_count(intent):
 
 def delete_chat_history(user_id):
     pyrebase_db.child("chat_history").child(user_id).remove()
+
+
