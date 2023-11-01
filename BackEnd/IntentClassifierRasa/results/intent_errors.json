@@ -1,0 +1,18 @@
+[
+  {
+    "text": "What's the current balance in my account?",
+    "intent": "Account_details",
+    "intent_prediction": {
+      "name": "Account_balance",
+      "confidence": 0.887064516544342
+    }
+  },
+  {
+    "text": "I'd like to know the balance of my account.",
+    "intent": "Account_balance",
+    "intent_prediction": {
+      "name": "Account_details",
+      "confidence": 0.8532286882400513
+    }
+  }
+]
