@@ -13,3 +13,5 @@ joblib
 jieba
 scipy
 googletrans
+nltk
+firebase-admin

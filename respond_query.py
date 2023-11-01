@@ -24,8 +24,8 @@ def get_response(user_msg, past_msgs, token, translate_to="en"):
     elif intent == "Account_balance":
         balance = GetBalance(token["localId"])
         db_context = f"Rs .{balance}"
-    elif intent == "Account_type":
-        db_context = GetAccountType(token["localId"])
+    # elif intent == "Account_type":
+    #     db_context = GetAccountType(token["localId"])
     elif intent == "Account_number":
         db_context = GetAccountNumber(token["localId"])
     elif intent == "Account_holder_name":
@@ -33,7 +33,12 @@ def get_response(user_msg, past_msgs, token, translate_to="en"):
     elif intent == "Account_emailaddress":
         db_context = GetAccountEmail(token["localId"])
     elif intent == "vectorDb":
-        vec_db_context, doc = search_similarity(user_msg)
+        vec_db_context = search_similarity(user_msg)
+
+    print("Before generating response")
+    print("Intent", intent)
+    print("Db context",db_context)
+    print("Veco DB context",vec_db_context)
 
     eng_response = generate_llama2_response(
         user_msg, past_msgs, context=vec_db_context, db_ans=db_context

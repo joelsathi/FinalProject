@@ -112,3 +112,72 @@ def GetAccount(accountNumber, password):
 # Example usage:
 # CreateAccount("kavijajak", "kavi@gmail.com", "Savings", 5000, "password")
 # GetAccount("ACC7", "password")
+
+# Function to save chat data for a specific user
+def save_chat_data(User_msg,Assistance_msg, intent,accountNumber):
+    current_datetime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    chat_data = {
+        "User_id":accountNumber,  # Use the UID as the user ID
+        "User_msg": User_msg,
+        "Assistance_msg":Assistance_msg,
+        "Intent": intent,
+        "timestamp": current_datetime
+    }
+    pyrebase_db.child("chat_history").child(accountNumber).push(chat_data)
+
+
+def convert_to_desired_format(chat_history):
+    formatted_chats = []
+    for chat_data in chat_history:
+        user_msg = {
+            "role": "user",
+            "content": chat_data["User_msg"]
+        }
+        assistant_msg = {
+            "role": "assistant",
+            "content": chat_data["Assistance_msg"]
+        }
+        formatted_chats.append(user_msg)
+        formatted_chats.append(assistant_msg)
+
+    return {"chats": formatted_chats}
+
+def get_latest_chat_history(user_id, limit=5):
+    try:
+        chat_history = pyrebase_db.child("chat_history").child(user_id).order_by_child("timestamp").limit_to_last(limit).get()
+        chat_data = chat_history.val()
+        if chat_data:
+            chat_list = [chat_data[key] for key in chat_data]
+            chat_list.reverse()  # Reverse the list to get the latest messages first
+            formatted_data = convert_to_desired_format(chat_list)
+            return formatted_data
+        else:
+            return {"chats": []}
+    except Exception as e:
+        print(f"Error: {e}")
+        return {"error": str(e)}
+
+
+from datetime import datetime
+
+# Assuming pyrebase_db is initialized properly
+# Replace 'accountNumber' with the actual user's account number
+
+# # Example 1: Saving a user message
+# user_message = "Hello, how can I help you?"
+# assistant_message = "Sure! What would you like to know?"
+# intent = "greeting"
+# accountNumber = "jeNIvFDcyUaocHqVz2HBJJnoAdG2"
+
+# save_chat_data(user_message, assistant_message, intent, accountNumber)
+
+# # Example 2: Saving another user message
+# user_message = "Tell me about recent technological advancements."
+# assistant_message = "I'd be happy to. Here are some recent advancements in technology..."
+# intent = "tech_info"
+# accountNumber = "jeNIvFDcyUaocHqVz2HBJJnoAdG2"
+
+# save_chat_data(user_message, assistant_message, intent, accountNumber)
+
+print(get_latest_chat_history("jeNIvFDcyUaocHqVz2HBJJnoAdG2"))
+
