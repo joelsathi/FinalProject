@@ -24,7 +24,7 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
                                     {chat_history}
                                     <s>[INST]
                                     <<SYS>>
-                                    Use to answer the question. You are a helpful and truthful banking assistant.
+                                    Use this context to answer the question. You are a helpful and truthful banking assistant.
                                     Context: {context}
                                     <</SYS>>
                                     {user_msg}
@@ -45,7 +45,7 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
     check_context_template = """
                             <s>[INST]
                             <<SYS>>
-                            Is this related to banking domain? Give Yes or No
+                            If this is a greeting, banking domain question, or a banking calculation, finance domain domain, say 'yes' otherwise say 'no'.
                             <</SYS>>
                             {user_msg}
                             [/INST]
@@ -55,27 +55,16 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
                             {chat_history}
                             <s>[INST]
                             <<SYS>>
+                            You are a helpful banking assistant. You will treat the users with care.
                             You should only answer this question if this question is in the banking domain as the assistant.
                             If this question is not in the banking domain, you should reply, 'I am a banking chatbot, I am not trained to answer this question.', and you should not provide information more on that subject.
-                            If this question is a basic banking calculation, do the calculation and provide the answer. If it is 
+                            If this question is a basic banking calculation, do the calculation and provide the answer. 
                             <</SYS>>
                             {user_msg}
                             [/INST]
                             """
-
-    l = len(past_msgs)
-    cnt = 0
-    chat_history = ""
+    chat_history = past_msgs
     answer_flag = True
-    # for dict_message in past_msgs:
-    #     if dict_message["role"] == "user":
-    #         if l - cnt <= 2:
-    #             chat_history += "User: " + dict_message["content"] + "\n\n"
-    #     else:
-    #         if l - cnt <= 2:
-    #             chat_history += "Assistant: " + dict_message["content"] + "\n\n"
-    #     cnt += 1
-    # chat_history = ""
     if context != "":
         string_dialogue = answer_using_context_template.format(chat_history=chat_history, user_msg=user_input, context=context)
     elif db_ans != "":

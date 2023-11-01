@@ -253,4 +253,3 @@ def Get_Exchange_Rates():
         return table
     else:
         return "No data found in the database."
-

@@ -5,3 +5,4 @@
 /BackEnd/IntentClassifierRasa/.rasa/cache
 /BackEnd/.env
 /BackEnd/LLM/configure.py
+/BackEnd/Src/prompt/google_translator.py
