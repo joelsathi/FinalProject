@@ -2,7 +2,7 @@ import json
 from fastapi import APIRouter, Response, status, Request, HTTPException, Header, Form, Depends
 from fastapi.responses import JSONResponse
 from .models import UserModel
-from FireBaseDB.access_db import GetAccountDetails, auth
+from FireBaseDB.access_db import GetAccountDetails, auth, GetAccountEmail, GetAccountName
 from fastapi.security import OAuth2PasswordBearer
 from FireBaseDB.access_db import get_latest_chat_history
 
@@ -23,12 +23,7 @@ async def login(request: Request):
        return HTTPException(detail={'message': 'There was an error logging in'}, status_code=400)
 
 @user_router.get("/auth-status", include_in_schema=False)
-async def checkStatus(request: Request):
-    return JSONResponse(content={'status': 'success', 'data' : {'email':'sada@gmail.com', 'name':'sada'}}, status_code=200)
-
-
-@user_router.get("/past_conversations", include_in_schema=False)
-async def get_past_conversations(request: Request, authorization: str = Header(None)):
+async def checkStatus(request: Request, authorization: str = Header(None)):
     if authorization is None:
         raise HTTPException(detail={'message': 'Authorization header is missing'}, status_code=401)
 
@@ -36,12 +31,15 @@ async def get_past_conversations(request: Request, authorization: str = Header(N
     if not authorization.startswith('Bearer '):
         raise HTTPException(detail={'message': 'Invalid Authorization header format'}, status_code=401)
 
-    token = authorization[7:]  # Extract the token part after 'Bearer '
-
+    token = authorization[7:]  # Extract the token part after 'Bearer
     try:
-        user = auth.refresh(token)
-        account_number = user['userId']
-        chat_history = get_latest_chat_history(account_number, limit=5)
-        return JSONResponse(content={'token': token, 'chats': chat_history}, status_code=200)
-    except Exception as e:
+        token = auth.refresh(token)
+        email = GetAccountEmail(token['userId'])
+        name = GetAccountName(token['userId'])
+        return JSONResponse(content={'status': 'success', 'data' : {'email':email, 'name':name}}, status_code=200)
+    except:
         return HTTPException(detail={'message': 'There was an error logging in'}, status_code=400)
+
+@user_router.get("/logout", include_in_schema=False)
+async def logout(request: Request):
+    return JSONResponse(content={'status': 'success'}, status_code=200)

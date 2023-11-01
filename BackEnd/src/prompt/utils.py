@@ -3,10 +3,9 @@ from VectorDB_chat.access_db import search_similarity
 from FireBaseDB.access_db import GetAccountDetails
 from IntentClassifierRasa.intent_finder import get_intent
 from fastapi.responses import JSONResponse
+from FireBaseDB.write_db import save_chat_data
 
 def get_response(user_msg, token):
-
-    # return user_msg
 
     intent = get_intent(user_msg)
 
@@ -36,7 +35,9 @@ def get_response(user_msg, token):
         vec_db_context = search_similarity(user_msg)
 
     past_msgs = dict()
-    
+
     llm_response = generate_llama2_response(user_msg, past_msgs=past_msgs, context=vec_db_context, db_ans=db_context)
+
+    save_chat_data(User_msg=user_msg, Assistance_msg=llm_response, intent=intent, accountNumber=token['userId'])
 
     return llm_response

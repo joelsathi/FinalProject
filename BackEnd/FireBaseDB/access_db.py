@@ -30,7 +30,7 @@ def GetAccountDetails(accountNumber):
     account_type = pyrebase_db.child("Account").child(accountNumber).child("account_type").get().val()
     email = pyrebase_db.child("Account").child(accountNumber).child("email").get().val()
 
-    return f"Name: {name} Account Type: {account_type} Email: {email} Balance: {balance}"
+    return f"User_Name: {name} Account Type: {account_type} Email: {email} Balance: {balance}"
 
 # Get account number of user ---------------------------------------------
 def GetAccountNumber(accountNumber):
@@ -79,9 +79,9 @@ def convert_to_desired_format(chat_history):
 
     cur = {"chats": formatted_chats}
 
-    json_object = json.dumps(cur, indent=2)
+    # json_object = json.dumps(cur, indent=2)
 
-    return json_object
+    return cur
 
 def get_latest_chat_history(user_id, limit=5):
     try:
@@ -93,7 +93,7 @@ def get_latest_chat_history(user_id, limit=5):
             formatted_data = convert_to_desired_format(chat_list)
             return formatted_data
         else:
-            return json.dumps({"chats": []}, indent=2)
+            return {"chats": []}
     except Exception as e:
         print(f"Error: {e}")
         return {"error": str(e)}
