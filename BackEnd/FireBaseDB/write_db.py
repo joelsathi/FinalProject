@@ -79,3 +79,5 @@ def add_FAQ_count(intent):
 
 def delete_chat_history(user_id):
     pyrebase_db.child("chat_history").child(user_id).remove()
+
+

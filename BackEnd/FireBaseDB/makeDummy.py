@@ -129,3 +129,22 @@ def create_fixed_rates(term_and_payement_method, interest_rate):
 # create_fixed_rates("5 Years -Interest paid monthly (LKR)", "8.75%")
 # create_fixed_rates("5 Years -Interest paid annually (LKR)", "9.00%")
 
+
+# acc="zwGbr6s1CNY9JGZcmZRF1LOBza22"
+# # Example data for 10 chat entries
+# chat_data = [
+#     {"User_msg": "Hello", "Assistance_msg": "Hi, how can I assist you?", "Intent": "Greeting"},
+#     {"User_msg": "I'd like to check my balance.", "Assistance_msg": "Sure, please provide your account number.", "Intent": "Check Balance"},
+#     {"User_msg": "My account number is 789012.", "Assistance_msg": "Thank you. Let me find your account.", "Intent": "Provide Account Number"},
+#     {"User_msg": "What's my current balance?", "Assistance_msg": "Your current balance is $2,500.", "Intent": "Check Balance", "accountNumber": "789012"},
+#     {"User_msg": "Can I transfer money to another account?", "Assistance_msg": "Yes, you can. Please provide the recipient's account number.", "Intent": "Transfer Money", "accountNumber": "789012"},
+#     {"User_msg": "The recipient's account number is 345678.", "Assistance_msg": "Thank you. How much would you like to transfer?", "Intent": "Provide Recipient Account Number", "accountNumber": "789012"},
+#     {"User_msg": "I want to transfer $500.", "Assistance_msg": "Your transfer of $500 has been initiated.", "Intent": "Transfer Money", "accountNumber": "789012"},
+#     {"User_msg": "What's the interest rate for a savings account?", "Assistance_msg": "The current interest rate for our savings account is 2.5%.", "Intent": "Check Interest Rate", "accountNumber": "789012"},
+#     {"User_msg": "Thank you for your help.", "Assistance_msg": "You're welcome! If you have any more questions, feel free to ask.", "Intent": "Greeting", "accountNumber": "789012"},
+#     {"User_msg": "Goodbye", "Assistance_msg": "Goodbye! Have a great day!", "Intent": "Goodbye", "accountNumber": "789012"}
+# ]
+
+# # Loop through the chat data and add each entry to the database
+# for entry in chat_data:
+#     save_chat_data(entry["User_msg"], entry["Assistance_msg"], entry["Intent"], acc)
