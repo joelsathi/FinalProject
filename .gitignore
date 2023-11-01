@@ -4,3 +4,4 @@
 /BackEnd/IntentClassifierRasa/__pycache__
 /BackEnd/IntentClassifierRasa/.rasa/cache
 /BackEnd/.env
+/BackEnd/LLM/configure.py

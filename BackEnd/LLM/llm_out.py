@@ -1,8 +1,8 @@
 import replicate
 import os
 # from stop_word_remover import prompt_without_stop_words
+from configure import REPLICATE_API_TOKEN
 
-REPLICATE_API_TOKEN = "r8_3HKUEnH4PKx42QQIVjSLRyxhuXLimLL39mBtL"
 os.environ['REPLICATE_API_TOKEN'] = REPLICATE_API_TOKEN
 
 def get_output_llm(prompt, temperature=0.1, top_p=0.8, max_length=512, repetition_penalty=1):
@@ -99,3 +99,5 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
         for item in output:
             response += str(item)
     return response
+
+print(REPLICATE_API_TOKEN)
