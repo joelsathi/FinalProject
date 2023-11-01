@@ -169,3 +169,19 @@ def CreateTime():
 #     db.child("Time_stamp").child(i).set({"count": 0})
 # for i in numbers:
 #     db.child("Time_stamp").child(str(i)).set({"count": 0})
+
+
+def createIntent(intent):
+    intent_data = {
+        "positive": 0,
+        "negative": 0,
+    }
+
+    db.child("intent").child(intent).set(intent_data)
+
+
+# createIntent("Transaction")
+# createIntent("Exchange_rate")
+# createIntent("Loan_rate")
+# createIntent("Fixed_rate")
+# createIntent("Savings_rate")

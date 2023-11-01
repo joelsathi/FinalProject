@@ -78,7 +78,7 @@ def main():
     )
     # Add a title with a line underneath for "Admin Dashboard"
     st.markdown(
-        "<h1 style='text-align: center; font-size: 60px; border-bottom: 1px solid #ccc;'>Admin Dashboard</h1>",
+        "<h1 style='text-align: left; font-size: 60px; border-bottom: 1px solid #ccc;'>🤖BotMora</h1>",
         unsafe_allow_html=True,
     )
 
@@ -91,7 +91,13 @@ def main():
         y=["Positive", "Negative"],
         labels={"value": "Counts"},
         color_discrete_map={"Positive": "palegreen", "Negative": "lightcoral"},
+        orientation="v",
     )
+    # Rotate the x-axis labels
+    fig.update_xaxes(tickangle=0)
+    # Increase the size of the x-axis tick labels
+    fig.update_xaxes(tickfont=dict(size=11))
+    fig.update_yaxes(tickfont=dict(size=12))
 
     # Add hover text to display count values
     fig.update_traces(
@@ -100,8 +106,12 @@ def main():
 
     # Customize layout
     fig.update_layout(
-        xaxis_title="Intents",
-        yaxis_title="Counts",
+        xaxis=dict(
+            title="<b>Intents</b>",
+        ),
+        yaxis=dict(
+            title="<b>No of Queries</b>",
+        ),
         barmode="group",
     )
 
@@ -138,10 +148,28 @@ def main():
         df_day,
         x="Day",
         y=["Count"],
-        color="Day",
-        labels={"value": "Counts"},
-        # color_discrete_map={"Positive": "palegreen", "Negative": "lightcoral"},
+        # color="Day",
+        labels={"value": "Count"},
+        color_discrete_sequence=["purple"],
     )
+
+    # Add hover text to display count values
+    fig_day.update_traces(
+        hovertemplate='<span style="font-size: 14px; color: black;"> %{x}: %{y} units</span>',
+    )
+
+    # Customize layout
+    fig_day.update_layout(
+        xaxis=dict(
+            title="<b>Days</b>",
+        ),
+        yaxis=dict(
+            title="<b>No of Queries</b>",
+        ),
+        bargap=0.5,
+    )
+
+    # ================================#
 
     hours = list(range(1, 25))
     hour_data = {}
@@ -165,8 +193,12 @@ def main():
         df_hour,
         values="Count",
         names="Hour",
-        title="Hour Wise Count",
         # color_discrete_map={"Positive": "palegreen", "Negative": "lightcoral"},
+    )
+
+    # Add hover text to display count values
+    fig_hour.update_traces(
+        hovertemplate='<span style="font-size: 14px; color: black;"> %{values}: %{count} units</span>',
     )
 
     # Create two columns
@@ -219,6 +251,23 @@ def main():
                 f"<h4 style='color: black;'> {data['question']}</h4>"
                 f"<h5 style='color: black;'><b>People asked:{data['count']}</b> </h5>"
                 "</div>",
+                unsafe_allow_html=True,
+            )
+        # Create a block at the bottom of the page
+        col1, col2, col3 = st.columns([1, 6, 1])
+
+        with col2:
+            st.markdown(
+                """
+            <div style="background-color: #f5f5f5; padding: 10px; border-radius: 5px; border: 1px solid #ccc; 
+            text-align: center;font-size: 18px;">
+                🤖BotMora 2023.<br>
+                Localized Banking Chatbot for Customer Service.<br>
+                Bank OF MorA, Moratuwa, Sri Lanka.<br>
+                Project Team - Gropu_23 : Sanu, Joel, Sandaruth<br>
+                All rights reserved.<br>
+            </div>
+            """,
                 unsafe_allow_html=True,
             )
 
