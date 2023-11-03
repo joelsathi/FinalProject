@@ -3,16 +3,8 @@ from datetime import datetime
 import hashlib  # For password hashing
 import json
 
-firebaseConfig = {
-  "apiKey": "AIzaSyDTrPMLJ9PnNqPPiY4KETnMAkNXSDVf1iM",
-  "authDomain": "botmora-25373.firebaseapp.com",
-  "databaseURL": "https://botmora-25373-default-rtdb.firebaseio.com",
-  "projectId": "botmora-25373",
-  "storageBucket": "botmora-25373.appspot.com",
-  "messagingSenderId": "223313770308",
-  "appId": "1:223313770308:web:bdb2bb2e428ddf11a70911",
-  "measurementId": "G-ZPYWSE9S0J"
-}
+with open("BackEnd/FireBaseDB/firebase_config.json") as f:
+    firebaseConfig = json.load(f)
 
 firebase=pyrebase.initialize_app(firebaseConfig)
 pyrebase_db=firebase.database()
@@ -89,7 +81,6 @@ def get_latest_chat_history(user_id, limit=5):
         chat_data = chat_history.val()
         if chat_data:
             chat_list = [chat_data[key] for key in chat_data]
-            chat_list.reverse()  # Reverse the list to get the latest messages first
             formatted_data = convert_to_desired_format(chat_list)
             return formatted_data
         else:
@@ -253,4 +244,3 @@ def Get_Exchange_Rates():
         return table
     else:
         return "No data found in the database."
-

@@ -5,3 +5,5 @@
 /BackEnd/IntentClassifierRasa/.rasa/cache
 /BackEnd/.env
 /BackEnd/LLM/configure.py
+/BackEnd/FireBaseDB/firebase_config.json
+/BackEnd/FireBaseDB/service_account_key.json

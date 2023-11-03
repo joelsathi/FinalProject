@@ -7,28 +7,10 @@ import sklearn
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 
-# from access_db import auth, pyrebase_db
+from access_db import auth, pyrebase_db
 
 # Load the Sentence Transformers model
 model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
-
-# from access_db import auth, pyrebase_db
-firebaseConfig = {
-    "apiKey": "AIzaSyDTrPMLJ9PnNqPPiY4KETnMAkNXSDVf1iM",
-    "authDomain": "botmora-25373.firebaseapp.com",
-    "databaseURL": "https://botmora-25373-default-rtdb.firebaseio.com",
-    "projectId": "botmora-25373",
-    "storageBucket": "botmora-25373.appspot.com",
-    "messagingSenderId": "223313770308",
-    "appId": "1:223313770308:web:bdb2bb2e428ddf11a70911",
-    "measurementId": "G-ZPYWSE9S0J",
-}
-
-firebase = pyrebase.initialize_app(firebaseConfig)
-pyrebase_db = firebase.database()
-
-auth = firebase.auth()
-
 
 def add_FAQ_count(question):
     # First, retrieve the current positive count
@@ -143,19 +125,3 @@ def add_negative_and_subtract_positive(intent):
 
 def delete_chat_history(user_id):
     pyrebase_db.child("chat_history").child(user_id).remove()
-
-
-# # method that adds 1 to the count for a specific intent in FAQ
-# def add_FAQ_count(intent):
-#     # First, retrieve the current positive count
-#     current_count = pyrebase_db.child("FAQ").child(intent).child("count").get()
-#     if current_count is not None:
-#         current_count = current_count.val()
-#     else:
-#         current_count = 0
-
-#     # Increment the positive count by 1
-#     new_count = current_count + 1
-
-#     # Set the updated positive count back in the database
-#     pyrebase_db.child("FAQ").child(intent).child("count").set(new_count)

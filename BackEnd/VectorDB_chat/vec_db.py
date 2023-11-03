@@ -11,7 +11,7 @@ import re
 from langchain.document_loaders import PyPDFLoader
 
 loader = PyPDFLoader(
-    "C:\\Users\\Sanu\\Desktop\\FinalProject\\BackEnd\\VectorDB_chat\\Data\\Bank of Mora.pdf"
+    "C:\\University\\Academics_5th_sem\\7. Data Science & Engineering Project\\FinalProject\\BackEnd\\VectorDB_chat\\Data\\Final_data.pdf"
 )
 documents = loader.load()
 
@@ -19,10 +19,10 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 text_splitter = RecursiveCharacterTextSplitter(
     # Set a really small chunk size, just to show.
-    chunk_size=400,
+    chunk_size=200,
     chunk_overlap=20,
     length_function=len,
-    separators=["\n\n"]
+    separators=["\n"]
     # TODO: Add seperator regex
 )
 
@@ -34,7 +34,7 @@ docs = text_splitter.split_documents(documents)
 
 from langchain.embeddings import SentenceTransformerEmbeddings
 
-embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L12-v2")
 
 # from langchain.embeddings import HuggingFaceEmbeddings
 # embeddings = HuggingFaceEmbeddings()
@@ -43,8 +43,8 @@ from langchain.vectorstores import Chroma
 
 db = Chroma.from_documents(docs, embeddings, persist_directory="../../db")
 
-# # Testing
-# query = "List out some transaction accounts."
+# Testing
+# query = "give Contact Information of your Bank?"
 # docs = db.similarity_search(query)
 
 # print(len(docs))
