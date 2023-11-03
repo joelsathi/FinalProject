@@ -40,6 +40,35 @@ Install the requirements.txt file using the following command.
 pip install -r requirements.txt
 ```
 
+### Set up Firebase
+
+Create a new project in firebase and add a new app to the project. <br>
+Enable the authentication and realtime database services. <br>
+Download the service account key and save it in the BackEnd/FireBaseDB/service_account_key.json <br>
+Download the config file and save it in the BackEnd/FireBaseDB/firebase_config.json <br>
+
+### Set up Google Translate
+
+- Set up a google cloud project
+- Enable the Google Translate API
+- Create a service account and download the service account key
+- Login with the service account in the google cloud console
+- Copy the project id put in the BackEnd/GoogleTranslate/google_translator.py
+
+### Set up Language Model
+
+- Get the replicate api token [here](https://replicate.com/account/api-tokens)
+- Create a file named, 'configure.py' in the BackEnd/LLM folder.
+
+### Set up VectorDB
+
+- Go to VectorDB folder
+- Run the following command to create the vector database
+
+```bash
+python vec_db.py
+```
+
 ## Usage
 
 Login details for the chatbot
@@ -81,14 +110,12 @@ rasa run --enable-api -m models/20231101-180349-oily-cevian.tar.gz
 Open a new command prompt and run the following command to start the action server.
 
 ```bash
-streamlit run streamlit_app.py
+cd BackEnd
 ```
 
-## Group Members
-
-- Sanujen Premkumar(200583P)
-- Joel Sathiyendra Thiyaheswaran(200590J)
-- Sandaruth Siriwardana(200607V)
+```bash
+uvicorn --port 1234 main:app --reload
+```
 
 ## Features
 
@@ -108,13 +135,17 @@ streamlit run streamlit_app.py
   <tr>
     <td align="center">
      <h1 style="text-align:center;">Sinhala</h1>
-      <img src="https://github.com/joelsathi/FinalProject/blob/7b482f5839a221fc5951182e53ac2ede3e80e1a4/screenshots/sinhala.png" width="450" alt="Image 1">     
+      <img src="./screenshots/sinhala1.png" width="450" alt="Image 1">     
     </td>
     <td align="center">
       <h1 style="text-align:center;">Tamil</h1>
-      <img src="https://github.com/joelsathi/FinalProject/blob/7b482f5839a221fc5951182e53ac2ede3e80e1a4/screenshots/tamil.png" width="450" alt="Image 2">
+      <img src="./screenshots/tamil.png" width="450" alt="Image 2">
     </td>
   </tr>
 </table>
 
-## Contributing
+## Group Members
+
+- Sanujen Premkumar(200583P)
+- Joel Sathiyendra Thiyaheswaran(200590J)
+- Sandaruth Siriwardana(200607V)
