@@ -7,7 +7,7 @@ import sklearn
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 
-from access_db import auth, pyrebase_db
+from .access_db import auth, pyrebase_db
 
 # Load the Sentence Transformers model
 model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
@@ -85,7 +85,7 @@ def save_chat_data(User_msg, Assistance_msg, intent, accountNumber):
     # Check for the FAQ similarity and updating the queries for particular time
     add_FAQ_count(User_msg)
     # Check for the intent and updating the positive count
-    add_positive_count(intent)
+    # add_positive_count(intent)
     # Add the chat data to the database
     pyrebase_db.child("chat_history").child(accountNumber).push(chat_data)
 

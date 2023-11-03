@@ -7,7 +7,7 @@ os.environ['REPLICATE_API_TOKEN'] = REPLICATE_API_TOKEN
 
 def get_output_llm(prompt, temperature=0.1, top_p=0.8, max_length=512, repetition_penalty=1):
     llm = 'a16z-infra/llama7b-v2-chat:4f0a4744c7295c024a1de15e1a63c880d3da035fa1f49bfd344fe076074c8eea'
-    # llm = "joehoover/zephyr-7b-alpha:14ec63365a1141134c41b652fe798633f48b1fd28b356725c4d8842a0ac151ee"
+    # llm = "replicate/llama-7b:ac808388e2e9d8ed35a5bf2eaa7d83f0ad53f9e3df31a42e4eb0a0c3249b3165"
     # llm = "a16z-infra/llama-2-13b-chat:9dff94b1bed5af738655d4a7cbcdcde2bd503aa85c94334fe1f42af7f3dd5ee3"
 
     # prompt_after_removing_stop_words = prompt_without_stop_words(prompt)
@@ -25,7 +25,6 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
                                     <s>[INST]
                                     <<SYS>>
                                     Use this context to answer the question. You are a helpful and truthful banking assistant.
-                                    If this context doesn't make sense to the output answer, you should reply, 'I am a banking chatbot, I am not trained to answer this question.', and you should not provide information more on that subject.
                                     Context: {context}
                                     <</SYS>>
                                     {user_msg}
@@ -37,7 +36,6 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
                                     <s>[INST]
                                     <<SYS>>
                                     Use to answer the question. You are a helpful and truthful banking assistant.
-                                    If this context doesn't make sense to the output answer, you should reply, 'I am a banking chatbot, I am not trained to answer this question.', and you should not provide information more on that subject.
                                     Context: {db_ans}
                                     <</SYS>>
                                     {user_msg}

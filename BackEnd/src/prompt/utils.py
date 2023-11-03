@@ -19,9 +19,11 @@ def translator_util(message:str, translate_to:str):
 
 def get_response(user_msg, token, language):
 
+    print(user_msg)
     user_msg = translator_util(user_msg, "English")
 
     intent = get_intent(user_msg)
+    print(intent)
 
     db_context = ""
     vec_db_context = ""
@@ -58,7 +60,7 @@ def get_response(user_msg, token, language):
 
     print(f"User Message: {user_msg} \nPast History: {past_history} \nDB Context: {db_context} \nVec DB Context: {vec_db_context}")
     llm_response = generate_llama2_response(user_msg, past_msgs=past_history, context=vec_db_context, db_ans=db_context)
-
+    print("Generated LLM Response")
     save_chat_data(User_msg=user_msg, Assistance_msg=llm_response, intent=intent, accountNumber=token['userId'])
 
     llm_response = translator_util(llm_response, language)

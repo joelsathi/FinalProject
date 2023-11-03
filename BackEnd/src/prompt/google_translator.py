@@ -2,7 +2,7 @@ from os import environ
 
 from google.cloud import translate
 
-PROJECT_ID = ""
+PROJECT_ID = "potent-comfort-403809"
 PARENT = f"projects/{PROJECT_ID}"
 
 def print_supported_languages(display_language_code: str):

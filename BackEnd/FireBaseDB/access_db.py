@@ -3,7 +3,7 @@ from datetime import datetime
 import hashlib  # For password hashing
 import json
 
-with open("BackEnd/FireBaseDB/firebase_config.json") as f:
+with open("C:/University/Academics_5th_sem/7. Data Science & Engineering Project/FinalProject/BackEnd/FireBaseDB/firebase_config.json") as f:
     firebaseConfig = json.load(f)
 
 firebase=pyrebase.initialize_app(firebaseConfig)
@@ -22,7 +22,7 @@ def GetAccountDetails(accountNumber):
     account_type = pyrebase_db.child("Account").child(accountNumber).child("account_type").get().val()
     email = pyrebase_db.child("Account").child(accountNumber).child("email").get().val()
 
-    return f"User_Name: {name} Account Type: {account_type} Email: {email} Balance: {balance}"
+    return f"User_Name: {name} | Account Type: {account_type} | Email: {email} | Balance: LKR {balance}"
 
 # Get account number of user ---------------------------------------------
 def GetAccountNumber(accountNumber):
