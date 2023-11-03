@@ -89,7 +89,6 @@ def get_latest_chat_history(user_id, limit=5):
         chat_data = chat_history.val()
         if chat_data:
             chat_list = [chat_data[key] for key in chat_data]
-            chat_list.reverse()  # Reverse the list to get the latest messages first
             formatted_data = convert_to_desired_format(chat_list)
             return formatted_data
         else:

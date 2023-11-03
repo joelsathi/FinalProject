@@ -12,45 +12,6 @@ The Localized Chatbot for Bank Customer Care project aims to develop an intellig
 
 - 24/7 Service:This chatbot is capable of providing 24 hour service and reduces workload for the bank staff. This will enable customers to interact with the bank even when the bank staff are not available.
 
-## Group Members
-
-- Sanujen Premkumar(200583P)
-- Joel Sathiyendra Thiyaheswaran(200590J)
-- Sandaruth Siriwardana(200607V)
-
-## Features
-
-- Can be used in Sinhala or Tamil or English.
-- Connected to real time database. Users can ask questions about their account details.
-- Users can ask questions about the bank services. The static data (i.e Data which does not change with time. Eg. Bank account opening procedures, loan procedures, bank history etc.) is stored in the vector database.
-- Chatbot is restricted to the banking domain. It will not answer questions which are not related to banking.
-  (Sometimes, the LLM might hallucinate and answer questions which are not related to banking. We are working on it)
-
-## Screenshots of Application
-
-### English
-
-![English](./screenshots/english.png)
-
-<table align="center">
-  <tr>
-    <td align="center">
-     <h1 style="text-align:center;">Sinhala</h1>
-      <img src="https://github.com/joelsathi/FinalProject/blob/7b482f5839a221fc5951182e53ac2ede3e80e1a4/screenshots/sinhala.png" width="450" alt="Image 1">     
-    </td>
-    <td align="center">
-      <h1 style="text-align:center;">Tamil</h1>
-      <img src="https://github.com/joelsathi/FinalProject/blob/7b482f5839a221fc5951182e53ac2ede3e80e1a4/screenshots/tamil.png" width="450" alt="Image 2">
-    </td>
-  </tr>
-</table>
-
-<!--### Sinhala
-![Sinhala](./screenshots/sinhala.png)
-
-### Tamil
-![Tamil](./screenshots/tamil.png)  -->
-
 ## Get Started
 
 ### Prerequisites
@@ -114,7 +75,7 @@ cd BackEnd\IntentClassifierRasa\
 Run the following command to start the Rasa server for the chatbot.
 
 ```bash
-rasa run --enable-api -m models/20231101-110640-parallel-ivy.tar.gz
+rasa run --enable-api -m models/20231101-180349-oily-cevian.tar.gz
 ```
 
 Open a new command prompt and run the following command to start the action server.
@@ -122,5 +83,38 @@ Open a new command prompt and run the following command to start the action serv
 ```bash
 streamlit run streamlit_app.py
 ```
+
+## Group Members
+
+- Sanujen Premkumar(200583P)
+- Joel Sathiyendra Thiyaheswaran(200590J)
+- Sandaruth Siriwardana(200607V)
+
+## Features
+
+- Can be used in Sinhala or Tamil or English.
+- Connected to real time database. Users can ask questions about their account details.
+- Users can ask questions about the bank services. The static data (i.e Data which does not change with time. Eg. Bank account opening procedures, loan procedures, bank history etc.) is stored in the vector database.
+- Chatbot is restricted to the banking domain. It will not answer questions which are not related to banking.
+  (Sometimes, the LLM might hallucinate and answer questions which are not related to banking. We are working on it)
+
+## Screenshots of Streamlit Application
+
+### English
+
+![English](./screenshots/english.png)
+
+<table align="center">
+  <tr>
+    <td align="center">
+     <h1 style="text-align:center;">Sinhala</h1>
+      <img src="https://github.com/joelsathi/FinalProject/blob/7b482f5839a221fc5951182e53ac2ede3e80e1a4/screenshots/sinhala.png" width="450" alt="Image 1">     
+    </td>
+    <td align="center">
+      <h1 style="text-align:center;">Tamil</h1>
+      <img src="https://github.com/joelsathi/FinalProject/blob/7b482f5839a221fc5951182e53ac2ede3e80e1a4/screenshots/tamil.png" width="450" alt="Image 2">
+    </td>
+  </tr>
+</table>
 
 ## Contributing

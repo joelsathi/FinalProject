@@ -260,6 +260,12 @@ nlu:
 
   - intent: exchange_rates
     examples: |
+      - Can you convert the money I have my account into Euros?
+      - I want to convert some money into Euros; can you help?
+      - I want to convert the money into US Dollars; can you help?
+      - I want to convert some money into US Dollars; can you help?
+      - If I convert the money in my account into Sigapore Dollars, how much will I get?
+      - If I convert the money in my account into American Dollars, how much will I get?
       - Can you give me all the available buying and selling rates in your bank?
       - What are the available buying and selling rates for all currencies?
       - What are the buying and selling rates for all currencies?

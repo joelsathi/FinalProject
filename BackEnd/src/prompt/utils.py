@@ -46,20 +46,21 @@ def get_response(user_msg, token, language):
     elif intent == 'vectorDb':
         vec_db_context = search_similarity(user_msg)
     
-    past_msgs = get_latest_chat_history(token['userId'], limit=2)
+    # past_msgs = get_latest_chat_history(token['userId'], limit=1)
     past_history = ""
-    if past_msgs is not None:
-        chat_history = past_msgs['chats']
-        for msg in chat_history:
-            if msg['role'] == 'user':
-                past_history += f"<s>\n[INST]\n{msg['content']}\n[/INST]\n"
-            else:
-                past_history += f"{msg['content']}\n</s>\n"
+    # if past_msgs is not None:
+    #     chat_history = past_msgs['chats']
+    #     for msg in chat_history:
+    #         if msg['role'] == 'user':
+    #             past_history += f"<s>\n[INST]\n{msg['content']}\n[/INST]\n"
+    #         else:
+    #             past_history += f"{msg['content']}\n</s>\n"
 
+    print(f"User Message: {user_msg} \nPast History: {past_history} \nDB Context: {db_context} \nVec DB Context: {vec_db_context}")
     llm_response = generate_llama2_response(user_msg, past_msgs=past_history, context=vec_db_context, db_ans=db_context)
 
     save_chat_data(User_msg=user_msg, Assistance_msg=llm_response, intent=intent, accountNumber=token['userId'])
 
     llm_response = translator_util(llm_response, language)
-
+    print(f"{llm_response}")
     return llm_response

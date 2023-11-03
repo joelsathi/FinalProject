@@ -1,8 +1,8 @@
 from langchain.embeddings import SentenceTransformerEmbeddings
 from langchain.vectorstores import Chroma
 
-embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
-vectordb = Chroma(persist_directory="db", embedding_function=embeddings)
+embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L12-v2")
+vectordb = Chroma(persist_directory="../db", embedding_function=embeddings)
 
 def search_similarity(query):
     
@@ -16,3 +16,9 @@ def search_similarity(query):
         context += chunk.page_content + "\n"
 
     return context
+
+# query = "Give contact number of your bank"
+# docs = search_similarity(query)
+
+# print(len(docs))
+# print(docs)

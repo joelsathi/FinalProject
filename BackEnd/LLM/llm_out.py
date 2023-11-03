@@ -25,6 +25,7 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
                                     <s>[INST]
                                     <<SYS>>
                                     Use this context to answer the question. You are a helpful and truthful banking assistant.
+                                    If this context doesn't make sense to the output answer, you should reply, 'I am a banking chatbot, I am not trained to answer this question.', and you should not provide information more on that subject.
                                     Context: {context}
                                     <</SYS>>
                                     {user_msg}
@@ -36,6 +37,7 @@ def generate_llama2_response(user_input, past_msgs ,context="", db_ans=""):
                                     <s>[INST]
                                     <<SYS>>
                                     Use to answer the question. You are a helpful and truthful banking assistant.
+                                    If this context doesn't make sense to the output answer, you should reply, 'I am a banking chatbot, I am not trained to answer this question.', and you should not provide information more on that subject.
                                     Context: {db_ans}
                                     <</SYS>>
                                     {user_msg}
