@@ -101,10 +101,16 @@ Open a command prompt
 cd BackEnd\IntentClassifierRasa\
 ```
 
+```bash
+rasa train
+```
+
+Get the model's name from the output 
+
 Run the following command to start the Rasa server for the chatbot.
 
 ```bash
-rasa run --enable-api -m models/20231101-180349-oily-cevian.tar.gz
+rasa run --enable-api -m models/name_of_the_model
 ```
 
 Open a new command prompt and run the following command to start the action server.
