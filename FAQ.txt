@@ -1,7 +1,0 @@
-Account_details:"Can you provide me with my current account balance and account type details?"
-transactions:"Can you show me the details of my last 5 financial transactions?"
-vectoDb:"How can I open a savings account with Bank of Mora, and what do I need to know about the process and requirements?"
-exchange_rates:"What is the current exchange rate for converting US Dollars (USD) to Sri Lankan Rupees (LKR)?"
-savings_rates:"What is the current interest rate for a regular savings account?"
-fixed_rates:"Can you provide the current interest rate for a 1-year fixed deposit?"
-loan-rates:"What is the current interest rate for a personal loan?"
